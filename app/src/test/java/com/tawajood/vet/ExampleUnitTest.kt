@@ -1,4 +1,4 @@
-package com.tawajood.myapplication
+package com.tawajood.vet
 
 import org.junit.Test
 

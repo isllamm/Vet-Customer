@@ -3,6 +3,17 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url "https://maven.google.com" }
+        //noinspection JcenterRepositoryObsolete
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if( requested.id.id == 'dagger.hilt.android.plugin') {
+                useModule("com.google.dagger:hilt-android-gradle-plugin:2.38.1")
+            }
+        }
     }
 }
 dependencyResolutionManagement {
@@ -10,6 +21,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url "https://maven.google.com" }
+        //noinspection JcenterRepositoryObsolete
+        jcenter() // Warning: this repository is going to shut down soon
     }
 }
 rootProject.name = "Vet Customer"
