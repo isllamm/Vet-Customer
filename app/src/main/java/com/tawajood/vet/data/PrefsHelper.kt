@@ -1,12 +1,12 @@
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.tawajood.snail.utils.Constants
+import com.tawajood.vet.utils.Constants
 import java.io.File
 
 object PrefsHelper {
 
-    private lateinit var preferences: SharedPreferences
+   private lateinit var preferences: SharedPreferences
     private const val PREFS_NAME = "shared_prefs"
 
 
@@ -127,6 +127,5 @@ object PrefsHelper {
     fun getEmail(): String {
         return preferences.getString(Constants.EMAIL, "")!!
     }
-
 
 }

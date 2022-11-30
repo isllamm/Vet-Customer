@@ -1,4 +1,3 @@
-package com.tawajood.snail.utils
 
 import android.annotation.SuppressLint
 import android.content.Context

@@ -1,4 +1,4 @@
-package com.tawajood.snail.utils
+package com.tawajood.vet.utils
 
 object Constants {
     const val LANG = "lang"
@@ -16,6 +16,7 @@ object Constants {
     const val EMAIL = "email"
     const val LAT = "lat"
     const val LNG = "lng"
+    const val TYPE = "lng"
     const val PARKING = "parking"
     const val SMS_TOKEN = "Bearer av9ZwgJyL-6SqEcFCWlS52gOEUgQ_50EcgtNMrfbaeY"
     const val _DATA = "_data"
@@ -27,7 +28,7 @@ object Constants {
     const val CLINIC_NAME = "name"
     const val REVIEW_CLINIC = "review"
     const val PET_ID = "id"
-    const val REQUEST_ID = "id"
+    const val CONSULTANT_ID = "id"
     const val CAT_ID = "id"
     const val VENDOR_ID = "id"
     const val SUB_CAT_ID = "id"
@@ -36,5 +37,6 @@ object Constants {
     const val OPEN_NOTIFICATION = "open_not"
     const val RECEIVER_ID = "receiver_id"
     const val ORDER_ID = "o"
+
 
 }

@@ -1,4 +1,4 @@
-package com.tawajood.snail.utils
+package com.tawajood.vetclinic.utils
 
 import android.content.Context
 import com.yariksoffice.lingver.Lingver

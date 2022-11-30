@@ -9,7 +9,8 @@
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_50sdp"
         android:layout_centerInParent="true"
-        app:indicatorName="BallSpinFadeLoaderIndicator"
+        app:indicatorColor="@color/light_blue"
+        app:indicatorName="BallClipRotatePulseIndicator"
         />
 
 </RelativeLayout>

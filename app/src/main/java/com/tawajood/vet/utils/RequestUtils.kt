@@ -1,6 +1,6 @@
-import android.util.Log
-import com.tawajood.snail.utils.Constants
+
 import com.tawajood.vet.pojo.MainResponse
+import com.tawajood.vet.utils.Constants
 import retrofit2.Response
 
 fun <T> handleResponse(response: Response<MainResponse<T>>): MainResponse<T> {

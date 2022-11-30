@@ -1,3 +1,4 @@
+package com.tawajood.vetclinic.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,7 +8,6 @@ import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.maps.model.LatLng
-import com.tawajood.snail.utils.Constants
 import kotlinx.coroutines.*
 import java.io.IOException
 import java.lang.Math.toRadians

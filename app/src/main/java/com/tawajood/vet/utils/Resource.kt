@@ -1,4 +1,4 @@
-package com.tawajood.snail.utils
+package com.tawajood.vetclinic.utils
 
 import java.io.Serializable
 
