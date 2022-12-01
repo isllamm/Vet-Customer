@@ -50,4 +50,14 @@ interface RetrofitApi {
     suspend fun getSpecialties(
         @Header("lang") lang: String,
     ): Response<MainResponse<SpecialtiesResponse>>
+
+    @GET("get-online-clinics")
+    suspend fun getOnlineClinics(
+        @Header("lang") lang: String,
+    ): Response<MainResponse<ClinicsResponse>>
+
+    @GET("most-rated-clinics")
+    suspend fun getMostRatedClinics(
+        @Header("lang") lang: String,
+    ): Response<MainResponse<ClinicsResponse>>
 }

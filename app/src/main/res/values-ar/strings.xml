@@ -133,4 +133,6 @@
     <string name="name">الاسم</string>
     <string name="search_for_doctor">البحث عن  طبيب </string>
     <string name="specialties">التخصصات</string>
+    <string name="aviliable_now">متاحين الان</string>
+    <string name="most_rated">الأعلى تقييماً</string>
 </resources>

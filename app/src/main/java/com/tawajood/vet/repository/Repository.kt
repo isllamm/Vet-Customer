@@ -1,4 +1,5 @@
 package com.tawajood.vet.repository
+
 import com.tawajood.vet.api.RetrofitApi
 import com.tawajood.vet.pojo.RegisterBody
 import javax.inject.Inject
@@ -35,4 +36,10 @@ constructor(private val api: RetrofitApi) {
 
     suspend fun getSpecialties() =
         api.getSpecialties(PrefsHelper.getLanguage())
+
+    suspend fun getOnlineClinics() =
+        api.getOnlineClinics(PrefsHelper.getLanguage())
+
+    suspend fun getMostRatedClinics() =
+        api.getMostRatedClinics(PrefsHelper.getLanguage())
 }

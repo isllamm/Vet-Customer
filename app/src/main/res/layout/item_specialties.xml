@@ -10,7 +10,7 @@
         android:id="@+id/img"
         android:layout_width="@dimen/_70sdp"
         android:layout_height="@dimen/_70sdp"
-        app:riv_corner_radius="@dimen/_40sdp"
+        app:riv_corner_radius="@dimen/_35sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

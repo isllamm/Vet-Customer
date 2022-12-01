@@ -1,10 +1,12 @@
 package com.tawajood.vet.ui.main.home
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.tawajood.vet.R
@@ -49,10 +51,40 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun setupUI() {
-
+        parent.showBottomNav(true)
     }
 
     private fun onClick() {
+        binding.mostFrame.setOnClickListener {
+            binding.mostFrame.background =
+                requireContext().getDrawable(R.drawable.full_border_radius_12_blue)
+            binding.tvMost.setTextColor(Color.parseColor("#FFFFFFFF"))
+
+            binding.avilFrame.background =
+                requireContext().getDrawable(R.drawable.full_border_radius_12_grey)
+            binding.tvAvil.setTextColor(Color.parseColor("#9BDAE3"))
+
+
+
+            binding.rvMostRatedDoctors.isVisible = true
+            binding.rvOnlineDoctors.isVisible = false
+
+        }
+
+        binding.avilFrame.setOnClickListener {
+            binding.avilFrame.background =
+                requireContext().getDrawable(R.drawable.full_border_radius_12_blue)
+            binding.tvAvil.setTextColor(Color.parseColor("#FFFFFFFF"))
+
+            binding.mostFrame.background =
+                requireContext().getDrawable(R.drawable.full_border_radius_12_grey)
+            binding.tvMost.setTextColor(Color.parseColor("#9BDAE3"))
+
+
+            binding.rvMostRatedDoctors.isVisible = false
+            binding.rvOnlineDoctors.isVisible = true
+
+        }
 
     }
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:fillViewport="true"
     tools:context=".ui.main.home.HomeFragment">
 
@@ -74,6 +75,85 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_specialties"
             tools:listitem="@layout/item_specialties" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_filter"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_specialties">
+
+            <FrameLayout
+                android:id="@+id/avil_frame"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_52sdp"
+                android:layout_margin="@dimen/_4sdp"
+                android:layout_weight="1"
+                android:background="@drawable/full_border_radius_12_blue">
+
+                <TextView
+                    android:id="@+id/tv_avil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/aviliable_now"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/most_frame"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_52sdp"
+                android:layout_margin="@dimen/_4sdp"
+                android:layout_weight="1"
+                android:background="@drawable/full_border_radius_12_grey">
+
+                <TextView
+                    android:id="@+id/tv_most"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/most_rated"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_online_doctors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            tools:listitem="@layout/item_doctor"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_filter" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_most_rated_doctors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_filter" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
