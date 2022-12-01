@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import com.tawajood.vet.R
 import com.tawajood.vet.databinding.FragmentOTPBinding
 import com.tawajood.vet.ui.auth.AuthActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class OTPFragment : Fragment(R.layout.fragment_o_t_p) {
 
 

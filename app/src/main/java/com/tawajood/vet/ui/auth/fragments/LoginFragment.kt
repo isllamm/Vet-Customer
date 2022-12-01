@@ -10,7 +10,7 @@ import com.tawajood.vet.R
 import com.tawajood.vet.databinding.FragmentLoginBinding
 import com.tawajood.vet.ui.auth.AuthActivity
 import com.tawajood.vet.ui.auth.AuthViewModel
-import com.tawajood.vetclinic.utils.Resource
+import com.tawajood.vet.utils.Resource
 
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -42,7 +42,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 viewModel.login(
                     "+" + binding.ccp.selectedCountryCode.toString(),
                     binding.phoneEt.text.toString(),
-                    binding.passwordEt.text.toString()
+                    "\$@#%12345AaBb\$@#%",
                 )
             }
 
@@ -56,13 +56,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun validate(): Boolean {
         if (TextUtils.isEmpty(binding.phoneEt.text)) {
             ToastUtils.showToast(requireContext(), getString(R.string.phone_is_required))
-
-            return false
-        }
-
-        if (TextUtils.isEmpty(binding.passwordEt.text)) {
-
-            ToastUtils.showToast(requireContext(), getString(R.string.password_is_required))
 
             return false
         }
@@ -84,9 +77,14 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     }
                     is Resource.Loading -> parent.showLoading()
                     is Resource.Success -> {
+                        val user = it.data!!.user
 
-                        PrefsHelper.setToken(it.data!!.token)
-
+                        PrefsHelper.setToken(user.token)
+                        PrefsHelper.setUserImage(user.image)
+                        PrefsHelper.setUserId(user.id)
+                        PrefsHelper.setUsername(user.name)
+                        PrefsHelper.setPhone(user.phone)
+                        PrefsHelper.setCountryCode(user.country_code)
                         PrefsHelper.setFirst(false)
 
                         parent.gotoMain()

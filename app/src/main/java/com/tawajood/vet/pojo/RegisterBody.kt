@@ -8,8 +8,5 @@ data class RegisterBody(
     var countryCode: String,
     var phone: String,
     var email: String,
-    var address: String,
-    @SerializedName("registration_number")
-    var registrationNumber: String,
     var password: String,
 )

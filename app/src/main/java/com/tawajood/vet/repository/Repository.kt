@@ -1,13 +1,6 @@
 package com.tawajood.vet.repository
-
-
 import com.tawajood.vet.api.RetrofitApi
 import com.tawajood.vet.pojo.RegisterBody
-import com.tawajood.vetclinic.utils.toMap
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody.Companion.asRequestBody
-import retrofit2.Response
 import javax.inject.Inject
 
 class Repository
@@ -40,5 +33,6 @@ constructor(private val api: RetrofitApi) {
             security
         )
 
-
+    suspend fun getSpecialties() =
+        api.getSpecialties(PrefsHelper.getLanguage())
 }

@@ -3,7 +3,7 @@
     <string name="app_name">Vet</string>
     <string name="welcome">مرحباً بك</string>
     <string name="login">تسجيل دخول</string>
-    <string name="register">عيادة جديدة</string>
+    <string name="register">تسجيل جديد</string>
     <string name="phone_number">رقم الجوال</string>
     <string name="check_number">تحقق</string>
     <string name="clinic_name">اسم العيادة</string>
@@ -130,4 +130,7 @@
     <string name="image">صورة</string>
     <string name="chat1">إجراء محادثة</string>
     <string name="share_with">المشاركة مع</string>
+    <string name="name">الاسم</string>
+    <string name="search_for_doctor">البحث عن  طبيب </string>
+    <string name="specialties">التخصصات</string>
 </resources>

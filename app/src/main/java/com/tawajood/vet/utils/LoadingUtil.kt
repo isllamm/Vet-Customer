@@ -1,8 +1,8 @@
-package com.tawajood.vetclinic.utils
+package com.tawajood.vet.utils
 
 import android.app.Dialog
 import android.content.Context
-import com.tawajood.vetclinic.R
+import com.tawajood.vet.R
 
 class LoadingUtil(context: Context) : Dialog(context) {
 

@@ -1,5 +1,6 @@
 package com.tawajood.vet.ui.auth.fragments
 
+import PrefsHelper
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -21,12 +22,10 @@ import com.tawajood.vet.databinding.FragmentRegisterBinding
 import com.tawajood.vet.pojo.RegisterBody
 import com.tawajood.vet.ui.auth.AuthActivity
 import com.tawajood.vet.ui.auth.AuthViewModel
-
-import com.tawajood.vetclinic.utils.Resource
-import com.tawajood.vetclinic.utils.getAddressForTextView
+import com.tawajood.vet.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
-import io.nlopez.smartlocation.SmartLocation
 import kotlinx.coroutines.flow.collectLatest
+
 
 @AndroidEntryPoint
 class RegisterFragment : Fragment(R.layout.fragment_register) {
@@ -52,34 +51,8 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         observeData()
     }
 
-    private val locationPermissionResult = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { result ->
-        Log.d("islam", "Request Per: Hi")
-        if (result) {
-            getCurrentLocation()
-        } else {
-            Log.e("islam", "onActivityResult: PERMISSION DENIED")
-            Toast.makeText(requireContext(), "Permission Denied", Toast.LENGTH_SHORT).show()
-        }
-    }
 
     private fun onClick() {
-        binding.ivLoc.setOnClickListener {
-            if (!SmartLocation.with(requireContext()).location().state()
-                    .locationServicesEnabled()
-            ) {
-                ToastUtils.showToast(
-                    requireContext(),
-                    getString(R.string.location),
-                )
-            } else {
-                parent.showLoading()
-                locationPermissionResult.launch(Manifest.permission.ACCESS_FINE_LOCATION)
-                Log.d("islam", "onClick: Hi")
-            }
-        }
-
 
         binding.btnCheck.setOnClickListener {
 
@@ -89,9 +62,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                     "+" + binding.ccp.selectedCountryCode.toString(),
                     binding.phoneEt.text.toString(),
                     binding.emailEt.text.toString(),
-                    binding.addressEt.text.toString(),
-                    binding.licenseNumEt.text.toString(),
-                    binding.passwordEt.text.toString()
+                    "\$@#%12345AaBb\$@#%"
                 )
             }
             viewModel.register(registerBody)
@@ -120,40 +91,6 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             return false
         }
 
-
-        if (TextUtils.isEmpty(binding.passwordEt.text)) {
-            ToastUtils.showToast(requireContext(), getString(R.string.password_is_required))
-
-            return false
-        }
-        if (TextUtils.isEmpty(binding.emailEt.text)) {
-            ToastUtils.showToast(requireContext(), getString(R.string.email_required))
-
-            return false
-        }
-        if (TextUtils.isEmpty(binding.licenseNumEt.text)) {
-            ToastUtils.showToast(requireContext(), getString(R.string.license_required))
-
-            return false
-        }
-        if (TextUtils.isEmpty(binding.addressEt.text)) {
-            ToastUtils.showToast(requireContext(), getString(R.string.address_required))
-
-            return false
-        }
-        if (binding.passwordEt.text.toString() != binding.cPasswordEt.text.toString()) {
-            ToastUtils.showToast(requireContext(), getString(R.string.password_not_match))
-
-            return false
-        }
-
-        if (binding.passwordEt.text.toString().length < 6) {
-            ToastUtils.showToast(
-                requireContext(),
-                getString(R.string.short_pass)
-            )
-            return false
-        }
 
         if (!binding.switch1.isChecked) {
             return false
@@ -200,7 +137,14 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                     is Resource.Idle -> {}
                     is Resource.Loading -> parent.showLoading()
                     is Resource.Success -> {
-                        PrefsHelper.setToken(it.data!!.token)
+                        val user = it.data!!.user
+
+                        PrefsHelper.setToken(user.token)
+                        PrefsHelper.setUserImage(user.image)
+                        PrefsHelper.setUserId(user.id)
+                        PrefsHelper.setUsername(user.name)
+                        PrefsHelper.setPhone(user.phone)
+                        PrefsHelper.setCountryCode(user.country_code)
 
                         PrefsHelper.setFirst(false)
 
@@ -211,38 +155,5 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         }
     }
 
-    private fun getCurrentLocation() {
-        parent.showLoading()
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            )
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            return
-        }
-        mFusedLocationClient.getCurrentLocation(Priority.PRIORITY_BALANCED_POWER_ACCURACY, null)
-            .addOnCompleteListener {
-                parent.hideLoading()
-                it.addOnSuccessListener { location ->
-                    if (location != null) {
-                        currentLatLng = LatLng(location.latitude, location.longitude)
-                        lat = location.latitude
-                        lng = location.longitude
 
-                        getAddressForTextView(
-                            requireContext(),
-                            location.latitude,
-                            location.longitude,
-                            binding.addressEt
-                        )
-                    } else {
-                        getCurrentLocation()
-                    }
-                }
-                it.addOnFailureListener { e ->
-                    Log.d("islam", "getLastKnownLocation: ${e.message}")
-                }
-            }
-    }
 }

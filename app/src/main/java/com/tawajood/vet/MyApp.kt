@@ -2,8 +2,9 @@ package com.tawajood.vet
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
-import com.tawajood.snail.utils.updateLanguage
+import com.tawajood.vet.utils.updateLanguage
 import com.yariksoffice.lingver.Lingver
+import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import java.util.*
 

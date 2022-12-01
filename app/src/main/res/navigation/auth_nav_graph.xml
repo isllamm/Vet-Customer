@@ -6,14 +6,6 @@
     app:startDestination="@id/loginFragment">
 
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.tawajood.vetclinic.ui.auth.fragments.LoginFragment"
-        android:label="LoginFragment" />
-    <fragment
-        android:id="@+id/forgetPasswordFragment"
-        android:name="com.tawajood.vetclinic.ui.auth.fragments.ForgetPasswordFragment"
-        android:label="ForgetPasswordFragment" />
-    <fragment
         android:id="@+id/OTPFragment"
         android:name="com.tawajood.vet.ui.auth.fragments.OTPFragment"
         android:label="fragment_o_t_p"
@@ -23,4 +15,14 @@
         android:name="com.tawajood.vet.ui.auth.fragments.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.tawajood.vet.ui.auth.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.tawajood.vet.ui.auth.fragments.ForgetPasswordFragment"
+        android:label="fragment_forget_password"
+        tools:layout="@layout/fragment_forget_password" />
 </navigation>

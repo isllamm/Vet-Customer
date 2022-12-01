@@ -11,17 +11,14 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.model.LatLng
 import com.tawajood.vet.R
 import com.tawajood.vet.databinding.ActivitySplashBinding
-import com.tawajood.vet.ui.MainActivity
 import com.tawajood.vet.ui.auth.AuthActivity
+import com.tawajood.vet.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
-    private var lat: Double? = null
-    private var lng: Double? = null
-    private lateinit var mFusedLocationClient: FusedLocationProviderClient
-    private lateinit var currentLatLng: LatLng
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,17 +29,24 @@ class SplashActivity : AppCompatActivity() {
 
 
         Glide.with(this)
-            .load(R.drawable.logo)
+            .load(R.drawable.splash)
             .into(binding.logo)
 
         Handler(Looper.myLooper()!!).postDelayed({
 
-            startActivity(Intent(this, AuthActivity::class.java))
+            if (PrefsHelper.isFirst()) {
+                startActivity(Intent(this, AuthActivity::class.java))
+            } else {
+                if (PrefsHelper.getToken().isEmpty()) {
+                    startActivity(Intent(this, AuthActivity::class.java))
+                } else {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+            }
 
 
             finish()
         }, 2000)
     }
-
 
 }

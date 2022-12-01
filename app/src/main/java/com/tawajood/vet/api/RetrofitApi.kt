@@ -1,22 +1,19 @@
 package com.tawajood.vet.api
 
-import com.tawajood.vet.pojo.Exist
-import com.tawajood.vet.pojo.MainResponse
-import com.tawajood.vet.pojo.RegisterBody
-import com.tawajood.vet.pojo.Token
+import com.tawajood.vet.pojo.*
 import retrofit2.Response
 import retrofit2.http.*
 
 interface RetrofitApi {
     companion object {
-        const val BASE_URL = "https://vet.horizon.net.sa/"
+        const val BASE_URL = "https://vet.horizon.net.sa/api/"
     }
 
     @POST("register")
     suspend fun register(
         @Header("lang") lang: String,
         @Body registerBody: RegisterBody
-    ): Response<MainResponse<Token>>
+    ): Response<MainResponse<UserResponse>>
 
     @FormUrlEncoded
     @POST("login")
@@ -25,7 +22,7 @@ interface RetrofitApi {
         @Field("country_code") countryCode: String,
         @Field("phone") phone: String,
         @Field("password") password: String
-    ): Response<MainResponse<Token>>
+    ): Response<MainResponse<UserResponse>>
 
 
     @FormUrlEncoded
@@ -47,4 +44,10 @@ interface RetrofitApi {
         @Field("forgetcode") forgetcode: String,
         @Field("security") security: String,
     ): Response<MainResponse<Any>>
+
+
+    @GET("get-specialties")
+    suspend fun getSpecialties(
+        @Header("lang") lang: String,
+    ): Response<MainResponse<SpecialtiesResponse>>
 }

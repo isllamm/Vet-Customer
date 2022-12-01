@@ -6,8 +6,9 @@ import androidx.lifecycle.viewModelScope
 import com.tawajood.vet.pojo.Exist
 import com.tawajood.vet.pojo.RegisterBody
 import com.tawajood.vet.pojo.Token
+import com.tawajood.vet.pojo.UserResponse
 import com.tawajood.vet.repository.Repository
-import com.tawajood.vetclinic.utils.Resource
+import com.tawajood.vet.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import handleResponse
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -23,10 +24,10 @@ constructor(
     private val repository: Repository
 ) : ViewModel() {
 
-    private val _userLoginFlow = MutableSharedFlow<Resource<Token>>()
+    private val _userLoginFlow = MutableSharedFlow<Resource<UserResponse>>()
     val userLoginFlow = _userLoginFlow.asSharedFlow()
 
-    private val _userRegisterFlow = MutableSharedFlow<Resource<Token>>()
+    private val _userRegisterFlow = MutableSharedFlow<Resource<UserResponse>>()
     val userRegisterFlow = _userRegisterFlow.asSharedFlow()
 
     private val _checkPhone = MutableStateFlow<Resource<Exist>>(Resource.Idle())
