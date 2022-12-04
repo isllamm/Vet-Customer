@@ -45,6 +45,28 @@ interface RetrofitApi {
         @Field("security") security: String,
     ): Response<MainResponse<Any>>
 
+    @GET("profile")
+    suspend fun getProfile(
+        @Header("lang") lang: String,
+        @Header("token") token: String
+    ): Response<MainResponse<ProfileResponse>>
+
+    @GET("setting/terms")
+    suspend fun terms(
+        @Header("lang") lang: String,
+    ): Response<MainResponse<Terms>>
+
+    @GET("setting/contact-us")
+    suspend fun contactUs(
+        @Header("lang") lang: String,
+    ): Response<MainResponse<ContactUsResponse>>
+
+    @FormUrlEncoded
+    @GET("notifications")
+    suspend fun getNotifications(
+        @Header("lang") lang: String,
+        @Field("user_id") user_id: String,
+    ): Response<MainResponse<NotificationResponse>>
 
     @GET("get-specialties")
     suspend fun getSpecialties(

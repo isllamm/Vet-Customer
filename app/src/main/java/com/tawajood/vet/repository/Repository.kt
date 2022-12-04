@@ -1,5 +1,6 @@
 package com.tawajood.vet.repository
 
+import PrefsHelper
 import com.tawajood.vet.api.RetrofitApi
 import com.tawajood.vet.pojo.RegisterBody
 import javax.inject.Inject
@@ -33,6 +34,13 @@ constructor(private val api: RetrofitApi) {
             forgetcode,
             security
         )
+
+    suspend fun getProfile() =
+        api.getProfile(PrefsHelper.getLanguage(), PrefsHelper.getToken())
+    suspend fun terms() = api.terms(PrefsHelper.getLanguage())
+    suspend fun contact() = api.contactUs(PrefsHelper.getLanguage())
+    suspend fun getNotifications() =
+        api.getNotifications(PrefsHelper.getLanguage(), PrefsHelper.getUserId().toString())
 
     suspend fun getSpecialties() =
         api.getSpecialties(PrefsHelper.getLanguage())

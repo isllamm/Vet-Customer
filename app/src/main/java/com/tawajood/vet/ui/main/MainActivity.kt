@@ -44,6 +44,10 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.ivBack.setOnClickListener {
             navController.popBackStack()
         }
+
+        binding.toolbar.ivNotification.setOnClickListener {
+            navController.navigate(R.id.notificationsFragment)
+        }
     }
 
     fun logout() {

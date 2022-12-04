@@ -1,7 +1,6 @@
-package com.tawajood.vet.ui.main.profile
+package com.tawajood.vet.ui.main.notifications
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,58 +9,43 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.tawajood.vet.R
-import com.tawajood.vet.adapters.DoctorsAdapter
-import com.tawajood.vet.databinding.FragmentProfileBinding
-import com.tawajood.vet.databinding.FragmentSearchBinding
+import com.tawajood.vet.adapters.NotificationAdapter
+import com.tawajood.vet.databinding.FragmentNotificationsBinding
 import com.tawajood.vet.ui.main.MainActivity
-import com.tawajood.vet.ui.main.search.SearchViewModel
-import com.tawajood.vet.utils.Constants
 import com.tawajood.vet.utils.Resource
+
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
-class ProfileFragment : Fragment(R.layout.fragment_profile) {
+class NotificationsFragment : Fragment(R.layout.fragment_notifications) {
 
-
-    private lateinit var binding: FragmentProfileBinding
+    private lateinit var binding: FragmentNotificationsBinding
     private lateinit var parent: MainActivity
-    private val viewModel: ProfileViewModel by viewModels()
+    private val viewModel: NotificationsViewModel by viewModels()
+    private lateinit var notificationAdapter: NotificationAdapter
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentProfileBinding.bind(requireView())
+        binding = FragmentNotificationsBinding.bind(requireView())
         parent = requireActivity() as MainActivity
 
-
         setupUI()
-        onClick()
         observeData()
-    }
-
-    private fun setupUI() {
-        parent.showBottomNav(true)
+        setupNotification()
 
     }
 
-    private fun onClick() {
-        binding.clProfile.setOnClickListener {
-            parent.navController.navigate(R.id.profileDetailsFragment)
-        }
+    private fun setupNotification() {
+        notificationAdapter = NotificationAdapter()
 
-        binding.clSupport.setOnClickListener {
-            parent.navController.navigate(R.id.supportFragment)
-        }
-
-        binding.clTc.setOnClickListener {
-            parent.navController.navigate(R.id.termsFragment)
-        }
+        binding.rvNotifications.adapter = notificationAdapter
     }
 
     private fun observeData() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.getProfileFlow.collectLatest {
+            viewModel.notifications.collectLatest {
                 parent.hideLoading()
                 when (it) {
                     is Resource.Error -> {
@@ -72,13 +56,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     }
                     is Resource.Loading -> parent.showLoading()
                     is Resource.Success -> {
-                        val user = it.data!!.profile
-                        Glide.with(requireContext()).load(user.image).into(binding.imgUser)
-                        binding.tvName.text = user.name
+                        notificationAdapter.notifications = it.data!!.notifications.data
                     }
                 }
             }
         }
+    }
+
+    private fun setupUI() {
+        parent.setTitle(getString(R.string.notifications))
+        parent.showBottomNav(true)
     }
 
 

@@ -1,7 +1,6 @@
 package com.tawajood.vet.ui.main.profile
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,28 +9,25 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.tawajood.vet.R
-import com.tawajood.vet.adapters.DoctorsAdapter
 import com.tawajood.vet.databinding.FragmentProfileBinding
-import com.tawajood.vet.databinding.FragmentSearchBinding
+import com.tawajood.vet.databinding.FragmentProfileDetailsBinding
 import com.tawajood.vet.ui.main.MainActivity
-import com.tawajood.vet.ui.main.search.SearchViewModel
-import com.tawajood.vet.utils.Constants
 import com.tawajood.vet.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
-class ProfileFragment : Fragment(R.layout.fragment_profile) {
+class ProfileDetailsFragment : Fragment(R.layout.fragment_profile_details) {
 
 
-    private lateinit var binding: FragmentProfileBinding
+    private lateinit var binding: FragmentProfileDetailsBinding
     private lateinit var parent: MainActivity
     private val viewModel: ProfileViewModel by viewModels()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentProfileBinding.bind(requireView())
+        binding = FragmentProfileDetailsBinding.bind(requireView())
         parent = requireActivity() as MainActivity
 
 
@@ -41,22 +37,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private fun setupUI() {
-        parent.showBottomNav(true)
+        parent.showBottomNav(false)
+        parent.setTitle(getString(R.string.profile))
 
     }
 
     private fun onClick() {
-        binding.clProfile.setOnClickListener {
-            parent.navController.navigate(R.id.profileDetailsFragment)
-        }
 
-        binding.clSupport.setOnClickListener {
-            parent.navController.navigate(R.id.supportFragment)
-        }
-
-        binding.clTc.setOnClickListener {
-            parent.navController.navigate(R.id.termsFragment)
-        }
     }
 
     private fun observeData() {
@@ -75,11 +62,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                         val user = it.data!!.profile
                         Glide.with(requireContext()).load(user.image).into(binding.imgUser)
                         binding.tvName.text = user.name
+                        binding.tvNumber.text = user.country_code + user.phone
+                        binding.tvEmail.text = user.email
                     }
                 }
             }
         }
     }
-
 
 }
