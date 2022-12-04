@@ -71,6 +71,9 @@ class MainActivity : AppCompatActivity() {
 
     fun showBottomNav(isVisible: Boolean) {
         binding.bottomNavView.isVisible = isVisible
+        binding.toolbar.logo.isVisible = isVisible
+        binding.toolbar.ivNotification.isVisible = isVisible
+        binding.toolbar.title.isVisible = !isVisible
         binding.toolbar.ivBack.isVisible = !isVisible
     }
 }

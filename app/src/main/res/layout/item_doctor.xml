@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="@dimen/_150sdp"
-    android:layout_height="@dimen/_190sdp"
-    android:layout_margin="@dimen/_6sdp"
+    android:layout_width="@dimen/_130sdp"
+    android:layout_height="@dimen/_180sdp"
+    android:layout_margin="@dimen/_4sdp"
     android:clickable="true"
-    android:padding="@dimen/_12sdp"
     android:elevation="@dimen/_12sdp"
     android:focusable="true"
+    android:padding="@dimen/_12sdp"
     app:cardCornerRadius="@dimen/_12sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,8 +48,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:text="طبيب"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_8ssp" />
+                android:textSize="@dimen/_10ssp" />
         </FrameLayout>
 
         <TextView

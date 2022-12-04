@@ -60,4 +60,18 @@ interface RetrofitApi {
     suspend fun getMostRatedClinics(
         @Header("lang") lang: String,
     ): Response<MainResponse<ClinicsResponse>>
+
+    @FormUrlEncoded
+    @POST("get-clinics-by-specialization")
+    suspend fun getClinicsBySpecialization(
+        @Header("lang") lang: String,
+        @Field("id") id: String,
+    ): Response<MainResponse<ClinicsResponse>>
+
+    @FormUrlEncoded
+    @POST("search-clinics")
+    suspend fun searchClinics(
+        @Header("lang") lang: String,
+        @Field("name") name: String,
+    ): Response<MainResponse<ClinicsResponse>>
 }

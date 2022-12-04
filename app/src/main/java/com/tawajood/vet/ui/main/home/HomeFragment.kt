@@ -3,17 +3,20 @@ package com.tawajood.vet.ui.main.home
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.tawajood.vet.R
+import com.tawajood.vet.adapters.MostRatedDoctorsAdapter
+import com.tawajood.vet.adapters.OnlineDoctorsAdapter
 import com.tawajood.vet.adapters.SpecialtiesAdapter
 import com.tawajood.vet.databinding.FragmentHomeBinding
+import com.tawajood.vet.pojo.Clinic
 import com.tawajood.vet.pojo.Specialties
 import com.tawajood.vet.ui.main.MainActivity
+import com.tawajood.vet.utils.Constants
 import com.tawajood.vet.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -27,6 +30,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var specialtiesAdapter: SpecialtiesAdapter
     private var specialties = mutableListOf<Specialties>()
+    private var onlineDoctors = mutableListOf<Clinic>()
+    private var mostDoctors = mutableListOf<Clinic>()
+    private lateinit var onlineDoctorsAdapter: OnlineDoctorsAdapter
+    private lateinit var mostRatedDoctorsAdapter: MostRatedDoctorsAdapter
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,15 +42,45 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         parent = requireActivity() as MainActivity
 
         setupSpecialties()
+        setupOnlineDoctors()
+        setupMostRatedDoctors()
         setupUI()
         onClick()
         observeData()
     }
 
+    private fun setupMostRatedDoctors() {
+        mostRatedDoctorsAdapter =
+            MostRatedDoctorsAdapter(object : MostRatedDoctorsAdapter.OnItemClick {
+                override fun onItemClickListener(position: Int) {
+
+                }
+
+            })
+
+        binding.rvMostRatedDoctors.adapter = mostRatedDoctorsAdapter
+    }
+
+    private fun setupOnlineDoctors() {
+        onlineDoctorsAdapter = OnlineDoctorsAdapter(object : OnlineDoctorsAdapter.OnItemClick {
+            override fun onItemClickListener(position: Int) {
+
+            }
+
+        })
+
+        binding.rvOnlineDoctors.adapter = onlineDoctorsAdapter
+    }
+
     private fun setupSpecialties() {
         specialtiesAdapter = SpecialtiesAdapter(object : SpecialtiesAdapter.OnItemClick {
             override fun onItemClickListener(position: Int) {
-
+                parent.navController.navigate(
+                    R.id.specialtiesResultsFragment, bundleOf(
+                        Constants.TITLE to specialties[position].name,
+                        Constants.SPE_ID to specialties[position].id,
+                    )
+                )
             }
 
         })
@@ -86,6 +124,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         }
 
+
+        binding.ivLoc.setOnClickListener {
+            parent.navController.navigate(
+                R.id.searchFragment, bundleOf(
+                    Constants.NAME_ID to binding.addressEt.text.toString()
+                )
+            )
+        }
+
     }
 
     private fun observeData() {
@@ -103,6 +150,44 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     is Resource.Success -> {
                         specialtiesAdapter.specialties = it.data!!.specialties
                         specialties = it.data.specialties
+                    }
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.getOnlineClinicsFlow.collectLatest {
+                parent.hideLoading()
+                when (it) {
+                    is Resource.Error -> {
+                        ToastUtils.showToast(requireContext(), it.message.toString())
+                    }
+                    is Resource.Idle -> {
+
+                    }
+                    is Resource.Loading -> parent.showLoading()
+                    is Resource.Success -> {
+                        onlineDoctorsAdapter.doctors = it.data!!.clinics
+                        onlineDoctors = it.data.clinics
+                    }
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.getMostRatedClinicsFlow.collectLatest {
+                parent.hideLoading()
+                when (it) {
+                    is Resource.Error -> {
+                        ToastUtils.showToast(requireContext(), it.message.toString())
+                    }
+                    is Resource.Idle -> {
+
+                    }
+                    is Resource.Loading -> parent.showLoading()
+                    is Resource.Success -> {
+                        mostRatedDoctorsAdapter.doctors = it.data!!.clinics
+                        mostDoctors = it.data.clinics
                     }
                 }
             }

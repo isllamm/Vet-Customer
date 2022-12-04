@@ -34,6 +34,8 @@ constructor(
 
     init {
         getSpecialties()
+        getOnlineClinics()
+        getMostRatedClinics()
     }
 
     private fun getSpecialties() = viewModelScope.launch {

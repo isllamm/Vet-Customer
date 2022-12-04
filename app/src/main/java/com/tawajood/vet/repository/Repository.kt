@@ -42,4 +42,10 @@ constructor(private val api: RetrofitApi) {
 
     suspend fun getMostRatedClinics() =
         api.getMostRatedClinics(PrefsHelper.getLanguage())
+
+    suspend fun getClinicsBySpecialization(id: String) =
+        api.getClinicsBySpecialization(PrefsHelper.getLanguage(), id)
+
+    suspend fun searchClinics(name: String) =
+        api.searchClinics(PrefsHelper.getLanguage(), name)
 }
