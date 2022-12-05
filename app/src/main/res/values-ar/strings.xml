@@ -63,11 +63,11 @@
     <string name="ar">العربية</string>
     <string name="en">الانجليزية</string>
     <string name="the_consultants">الاستشارات</string>
-    <string name="finished">المنتهية</string>
-    <string name="current">الحالية</string>
+    <string name="finished">السابقة</string>
+    <string name="current">القادمة</string>
     <string name="newc">الجديدة</string>
     <string name="consultant_date">تاريخ الطلب :</string>
-    <string name="consultant_number">رقم الاستشارة :</string>
+    <string name="consultant_number">رقم الطلب :</string>
     <string name="finished_consultant">طلب منتهى</string>
     <string name="current_consultant">طلب حالى</string>
     <string name="new_consultant">طلب جديد</string>
@@ -135,4 +135,14 @@
     <string name="specialties">التخصصات</string>
     <string name="aviliable_now">متاحين الان</string>
     <string name="most_rated">الأعلى تقييماً</string>
+    <string name="pending">المعلقة</string>
+    <string name="doctor_name">الدكتور:</string>
+    <string name="doctor_info">بيانات الطبيب</string>
+    <string name="doctor_report">تقرير الطبيب</string>
+    <string name="report">التقرير</string>
+    <string name="pay">سداد الرسوم</string>
+    <string name="cancel">الغاء</string>
+    <string name="pending_consultant1">استشارة معلقة</string>
+    <string name="previous_consultant1">استشارة سابقة</string>
+    <string name="current_consultant1">استشارة قادمة</string>
 </resources>

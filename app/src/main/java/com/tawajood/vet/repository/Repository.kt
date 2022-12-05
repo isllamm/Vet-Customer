@@ -37,6 +37,7 @@ constructor(private val api: RetrofitApi) {
 
     suspend fun getProfile() =
         api.getProfile(PrefsHelper.getLanguage(), PrefsHelper.getToken())
+
     suspend fun terms() = api.terms(PrefsHelper.getLanguage())
     suspend fun contact() = api.contactUs(PrefsHelper.getLanguage())
     suspend fun getNotifications() =
@@ -56,4 +57,18 @@ constructor(private val api: RetrofitApi) {
 
     suspend fun searchClinics(name: String) =
         api.searchClinics(PrefsHelper.getLanguage(), name)
+
+    suspend fun getMyRequests() =
+        api.getMyRequests(
+            PrefsHelper.getLanguage(),
+            PrefsHelper.getToken(),
+            PrefsHelper.getUserId().toString()
+        )
+
+    suspend fun getRequestById(requestId: String) =
+        api.getRequestById(
+            PrefsHelper.getLanguage(),
+            PrefsHelper.getToken(),
+            requestId,
+        )
 }

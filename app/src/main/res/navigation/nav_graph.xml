@@ -21,7 +21,11 @@
         android:id="@+id/myConsultantsFragment"
         android:name="com.tawajood.vet.ui.main.consultants.MyConsultantsFragment"
         android:label="fragment_my_consultants"
-        tools:layout="@layout/fragment_my_consultants" />
+        tools:layout="@layout/fragment_my_consultants" >
+        <action
+            android:id="@+id/action_myConsultantsFragment_to_myConsultantsInfoFragment"
+            app:destination="@id/myConsultantsInfoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myPetsFragment"
         android:name="com.tawajood.vet.ui.main.pets.MyPetsFragment"
@@ -81,4 +85,9 @@
         android:name="com.tawajood.vet.ui.main.notifications.NotificationsFragment"
         android:label="fragment_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/myConsultantsInfoFragment"
+        android:name="com.tawajood.vet.ui.main.consultants.MyConsultantsInfoFragment"
+        android:label="fragment_my_consultants_info"
+        tools:layout="@layout/fragment_my_consultants_info" />
 </navigation>

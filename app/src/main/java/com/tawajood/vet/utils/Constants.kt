@@ -24,7 +24,7 @@ object Constants {
     const val SMS_TOKEN = "Bearer av9ZwgJyL-6SqEcFCWlS52gOEUgQ_50EcgtNMrfbaeY"
     const val _DATA = "_data"
     const val REG_BODY = "reg_body"
-    const val VER_CODE = "ver_code"
+    const val STATUS = "status"
     const val MSG = "msg"
     const val IMAGE = "image"
     const val CLINIC = "clinic"

@@ -96,4 +96,20 @@ interface RetrofitApi {
         @Header("lang") lang: String,
         @Field("name") name: String,
     ): Response<MainResponse<ClinicsResponse>>
+
+    @FormUrlEncoded
+    @POST("my-requests")
+    suspend fun getMyRequests(
+        @Header("lang") lang: String,
+        @Header("token") token: String,
+        @Field("user_id") user_id: String,
+    ): Response<MainResponse<ConsultantResponse>>
+
+    @FormUrlEncoded
+    @POST("request-by-id")
+    suspend fun getRequestById(
+        @Header("lang") lang: String,
+        @Header("token") token: String,
+        @Field("request_id") request_id: String,
+    ): Response<MainResponse<ConsultantInfoResponse>>
 }
