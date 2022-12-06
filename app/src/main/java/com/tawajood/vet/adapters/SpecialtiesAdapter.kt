@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tawajood.vet.databinding.ItemSpecialtiesBinding
 import com.tawajood.vet.pojo.Specialties
+import com.tawajood.vet.pojo.SpecialtiesName
 
 class SpecialtiesAdapter(private val onItemClick: OnItemClick) :
     RecyclerView.Adapter<SpecialtiesAdapter.SpecialtiesViewHolder>() {
 
-    var specialties = mutableListOf<Specialties>()
+    var specialties = mutableListOf<SpecialtiesName>()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
@@ -34,8 +35,9 @@ class SpecialtiesAdapter(private val onItemClick: OnItemClick) :
         holder: SpecialtiesAdapter.SpecialtiesViewHolder,
         position: Int
     ) {
-        holder.binding.name.text = specialties[position].name
-        Glide.with(holder.itemView.context).load(specialties[position].image)
+        holder.binding.name.text = specialties[position].specialization.name
+        Glide.with(holder.itemView.context)
+            .load("https://vet.horizon.net.sa/uploads/specializations_images/" + specialties[position].specialization.image)
             .into(holder.binding.img)
 
         holder.itemView.setOnClickListener {

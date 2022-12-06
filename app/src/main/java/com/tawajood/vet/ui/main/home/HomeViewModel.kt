@@ -1,5 +1,6 @@
 package com.tawajood.vet.ui.main.home
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tawajood.vet.pojo.ClinicsResponse
@@ -45,9 +46,12 @@ constructor(
             if (response.status) {
                 _getSpecialtiesFlow.emit(Resource.Success(response.data!!))
             } else {
+                Log.d("islam", "getSpecialties: "+response.msg.toString())
+
                 _getSpecialtiesFlow.emit(Resource.Error(message = response.msg))
             }
         } catch (e: Exception) {
+            Log.d("islam", "getSpecialties: "+e.message.toString())
             _getSpecialtiesFlow.emit(Resource.Error(message = e.message!!))
         }
     }
@@ -59,9 +63,12 @@ constructor(
             if (response.status) {
                 _getOnlineClinicsFlow.emit(Resource.Success(response.data!!))
             } else {
+                Log.d("islam", "getSpecialties: "+response.msg.toString())
+
                 _getOnlineClinicsFlow.emit(Resource.Error(message = response.msg))
             }
         } catch (e: Exception) {
+            Log.d("islam", "getSpecialties: "+e.message.toString())
             _getOnlineClinicsFlow.emit(Resource.Error(message = e.message!!))
         }
     }
@@ -73,9 +80,11 @@ constructor(
             if (response.status) {
                 _getMostRatedClinicsFlow.emit(Resource.Success(response.data!!))
             } else {
+                Log.d("islam", "getSpecialties: "+response.msg.toString())
                 _getMostRatedClinicsFlow.emit(Resource.Error(message = response.msg))
             }
         } catch (e: Exception) {
+            Log.d("islam", "getSpecialties: "+e.message.toString())
             _getMostRatedClinicsFlow.emit(Resource.Error(message = e.message!!))
         }
     }

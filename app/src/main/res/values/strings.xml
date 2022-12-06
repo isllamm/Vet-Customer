@@ -142,8 +142,49 @@
     <string name="report">Report</string>
     <string name="pay">Pay</string>
     <string name="cancel">Cancel</string>
-
     <string name="pending_consultant1">pending consultant</string>
     <string name="previous_consultant1">previous consultant</string>
     <string name="current_consultant1">current consultant</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_new_pet">add new pet</string>
+    <string name="pet_name">Pet Name</string>
+    <string name="pet_type">Pet Type</string>
+    <string name="pet_breed">pet breed</string>
+    <string name="pet_gender">Pet Gender</string>
+    <string name="sterile_non_sterile">sterile/non-sterile</string>
+    <string name="pet_weight">Pet Weight</string>
+    <string name="kg">Kg</string>
+    <string name="pet_age">Pet Age</string>
+    <string name="pet_birthday">Pet BirthDay</string>
+    <string name="day">Day</string>
+    <string name="month">Month</string>
+    <string name="pet_image">Pet Image</string>
+    <string name="year">Year</string>
+
+    <array name="gender_types">
+        <item>male</item>
+        <item>female</item>
+    </array>
+
+    <array name="sterile_types">
+        <item>non sterile</item>
+        <item>sterile</item>
+    </array>
+
+    <array name="months">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Aug</item>
+        <item>Sep</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
+    </array>
+    <string name="added_pet">pet added</string>
+
 </resources>

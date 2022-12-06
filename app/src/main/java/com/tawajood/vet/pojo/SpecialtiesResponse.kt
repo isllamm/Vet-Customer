@@ -1,5 +1,5 @@
 package com.tawajood.vet.pojo
 
 data class SpecialtiesResponse(
-    val specialties: MutableList<Specialties>,
+    val specializations: MutableList<SpecialtiesName>,
 )

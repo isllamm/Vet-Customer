@@ -357,7 +357,7 @@
             android:backgroundTint="@color/light_red"
             android:text="@string/cancel"
             android:textAllCaps="false"
-            android:textColor="@color/light_black"
+            android:textColor="@color/red_500"
             android:textSize="@dimen/_12ssp"
             app:cornerRadius="@dimen/_12sdp"
             app:layout_constraintBottom_toTopOf="@+id/btn_pay"

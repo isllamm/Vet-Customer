@@ -2,7 +2,14 @@ package com.tawajood.vet.repository
 
 import PrefsHelper
 import com.tawajood.vet.api.RetrofitApi
+import com.tawajood.vet.pojo.MainResponse
+import com.tawajood.vet.pojo.PetBody
 import com.tawajood.vet.pojo.RegisterBody
+import com.tawajood.vet.utils.toMap
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import retrofit2.Response
 import javax.inject.Inject
 
 class Repository
@@ -71,4 +78,39 @@ constructor(private val api: RetrofitApi) {
             PrefsHelper.getToken(),
             requestId,
         )
+
+    suspend fun getMyPets() =
+        api.getMyPets(
+            PrefsHelper.getLanguage(),
+            PrefsHelper.getToken(),
+            PrefsHelper.getUserId().toString()
+        )
+
+    suspend fun addPet(petBody: PetBody): Response<MainResponse<Any>> {
+        if (petBody.image != null) {
+            val imagePart = MultipartBody.Part.createFormData(
+                "image",
+                petBody.image.name,
+                petBody.image.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+            )
+            return api.addPet(
+                PrefsHelper.getToken(),
+                PrefsHelper.getLanguage(),
+                petBody.toMap(),
+                imagePart
+            )
+        } else {
+            return api.addPet(
+                PrefsHelper.getToken(),
+                PrefsHelper.getLanguage(),
+                petBody,
+            )
+        }
+    }
+
+    suspend fun getPetTypes() =
+        api.getPetTypes(PrefsHelper.getLanguage())
+
+    suspend fun getVaccinationTypes() =
+        api.getVaccinationTypes(PrefsHelper.getLanguage())
 }

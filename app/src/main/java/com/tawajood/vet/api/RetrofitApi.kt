@@ -1,6 +1,8 @@
 package com.tawajood.vet.api
 
 import com.tawajood.vet.pojo.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -112,4 +114,40 @@ interface RetrofitApi {
         @Header("token") token: String,
         @Field("request_id") request_id: String,
     ): Response<MainResponse<ConsultantInfoResponse>>
+
+    @FormUrlEncoded
+    @POST("my-pets")
+    suspend fun getMyPets(
+        @Header("lang") lang: String,
+        @Header("token") token: String,
+        @Field("user_id") user_id: String,
+    ): Response<MainResponse<PetsResponse>>
+
+    @Multipart
+    @JvmSuppressWildcards
+    @POST("add-pet")
+    suspend fun addPet(
+        @Header("token") token: String,
+        @Header("lang") lang: String,
+        @PartMap petBody: Map<String, RequestBody>,
+        @Part image: MultipartBody.Part
+    ): Response<MainResponse<Any>>
+
+    @POST("add-pet")
+    suspend fun addPet(
+        @Header("token") token: String,
+        @Header("lang") lang: String,
+        @Body addPet: PetBody,
+    ): Response<MainResponse<Any>>
+
+    @GET("pet-types")
+    suspend fun getPetTypes(
+        @Header("lang") lang: String,
+    ): Response<MainResponse<PetsTypeResponse>>
+
+    @GET("vaccination-types")
+    suspend fun getVaccinationTypes(
+        @Header("lang") lang: String,
+    ): Response<MainResponse<VaccinationTypeResponse>>
+
 }

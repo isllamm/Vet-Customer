@@ -2,6 +2,7 @@ package com.tawajood.vet.ui.main.home
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.os.bundleOf
@@ -15,6 +16,7 @@ import com.tawajood.vet.adapters.SpecialtiesAdapter
 import com.tawajood.vet.databinding.FragmentHomeBinding
 import com.tawajood.vet.pojo.Clinic
 import com.tawajood.vet.pojo.Specialties
+import com.tawajood.vet.pojo.SpecialtiesName
 import com.tawajood.vet.ui.main.MainActivity
 import com.tawajood.vet.utils.Constants
 import com.tawajood.vet.utils.Resource
@@ -29,7 +31,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var parent: MainActivity
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var specialtiesAdapter: SpecialtiesAdapter
-    private var specialties = mutableListOf<Specialties>()
+    private var specialties = mutableListOf<SpecialtiesName>()
     private var onlineDoctors = mutableListOf<Clinic>()
     private var mostDoctors = mutableListOf<Clinic>()
     private lateinit var onlineDoctorsAdapter: OnlineDoctorsAdapter
@@ -77,8 +79,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             override fun onItemClickListener(position: Int) {
                 parent.navController.navigate(
                     R.id.specialtiesResultsFragment, bundleOf(
-                        Constants.TITLE to specialties[position].name,
-                        Constants.SPE_ID to specialties[position].id,
+                        Constants.TITLE to specialties[position].specialization.name,
+                        Constants.SPE_ID to specialties[position].specialization.id,
                     )
                 )
             }
@@ -148,8 +150,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     }
                     is Resource.Loading -> parent.showLoading()
                     is Resource.Success -> {
-                        specialtiesAdapter.specialties = it.data!!.specialties
-                        specialties = it.data.specialties
+                        specialtiesAdapter.specialties = it.data!!.specializations
+                        specialties = it.data.specializations
+
                     }
                 }
             }

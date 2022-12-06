@@ -145,4 +145,46 @@
     <string name="pending_consultant1">استشارة معلقة</string>
     <string name="previous_consultant1">استشارة سابقة</string>
     <string name="current_consultant1">استشارة قادمة</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_new_pet">إضافة حيوان جديد</string>
+    <string name="pet_name">اسم الحيوان</string>
+    <string name="pet_type">نوع الحيوان</string>
+    <string name="pet_breed">سلالة الحيوانات الأليفة</string>
+    <string name="pet_gender">جنس الحيوان</string>
+    <string name="sterile_non_sterile">عقيم/غير عقيم</string>
+    <string name="pet_weight">الوزن</string>
+    <string name="kg">كج</string>
+    <string name="pet_age">عمر الحيوان</string>
+    <string name="pet_birthday">يوم الميلاد</string>
+    <string name="day">يوم</string>
+    <string name="month">شهر</string>
+    <string name="pet_image">صورة الحيوان</string>
+    <string name="year">سنة</string>
+
+    <array name="gender_types">
+        <item>ذكر</item>
+        <item>انثى</item>
+    </array>
+
+    <array name="sterile_types">
+        <item>غير عقيم</item>
+        <item>عقيم</item>
+    </array>
+
+    <array name="months">
+        <item>يناير</item>
+        <item>فبراير</item>
+        <item>مارس</item>
+        <item>ابريل</item>
+        <item>مايو</item>
+        <item>يونيو</item>
+        <item>يوليو</item>
+        <item>أغسطس</item>
+        <item>سبتمبر</item>
+        <item>أكتوبر</item>
+        <item>نوفمبر</item>
+        <item>ديسمبر</item>
+    </array>
+    <string name="added_pet">تم إضافة الحيوان</string>
+
 </resources>
