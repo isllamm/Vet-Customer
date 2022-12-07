@@ -150,4 +150,9 @@ interface RetrofitApi {
         @Header("lang") lang: String,
     ): Response<MainResponse<VaccinationTypeResponse>>
 
+    @GET("categories")
+    suspend fun getCategories(
+        @Header("lang") lang: String,
+    ): Response<MainResponse<CategoriesResponse>>
+
 }

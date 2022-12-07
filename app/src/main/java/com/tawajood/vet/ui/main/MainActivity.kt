@@ -48,6 +48,10 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.ivNotification.setOnClickListener {
             navController.navigate(R.id.notificationsFragment)
         }
+
+        binding.toolbar.cart.setOnClickListener {
+
+        }
     }
 
     fun logout() {
@@ -79,5 +83,16 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.ivNotification.isVisible = isVisible
         binding.toolbar.title.isVisible = !isVisible
         binding.toolbar.ivBack.isVisible = !isVisible
+        binding.toolbar.cart.isVisible = !isVisible
+
+    }
+
+    fun isPharmacy(isTrue: Boolean) {
+        binding.bottomNavView.isVisible = isTrue
+        binding.toolbar.logo.isVisible = !isTrue
+        binding.toolbar.ivNotification.isVisible = !isTrue
+        binding.toolbar.title.isVisible = isTrue
+        binding.toolbar.ivBack.isVisible = isTrue
+        binding.toolbar.cart.isVisible = isTrue
     }
 }

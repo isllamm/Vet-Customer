@@ -74,6 +74,7 @@ class MyPetsFragment : Fragment(R.layout.fragment_my_pets) {
                     }
                     is Resource.Loading -> parent.showLoading()
                     is Resource.Success -> {
+                        myPets.clear()
                         myPets.add(
                             Pet(
                                 null,

@@ -28,5 +28,7 @@
     </style>
 
 
-
+    <style name="DialogThemeCalender" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/light_blue</item>
+    </style>
 </resources>

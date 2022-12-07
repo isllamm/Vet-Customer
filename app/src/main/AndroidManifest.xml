@@ -15,6 +15,7 @@
         android:theme="@style/Theme.VetCustomer"
         tools:targetApi="31">
         <activity
+            android:windowSoftInputMode="adjustPan|adjustResize"
             android:name=".ui.auth.AuthActivity"
             android:exported="false" />
         <activity
@@ -27,6 +28,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:windowSoftInputMode="adjustPan|adjustResize"
             android:name=".ui.main.MainActivity"
             android:exported="true" />
     </application>

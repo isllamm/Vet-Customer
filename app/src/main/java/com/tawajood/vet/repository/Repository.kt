@@ -113,4 +113,7 @@ constructor(private val api: RetrofitApi) {
 
     suspend fun getVaccinationTypes() =
         api.getVaccinationTypes(PrefsHelper.getLanguage())
+
+    suspend fun getCategories() =
+        api.getCategories(PrefsHelper.getLanguage())
 }

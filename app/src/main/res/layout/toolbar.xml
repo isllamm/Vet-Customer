@@ -12,10 +12,23 @@
         android:layout_marginStart="@dimen/_12sdp"
         android:layout_marginTop="@dimen/_28sdp"
         android:layout_marginBottom="@dimen/_6sdp"
-        android:src="@drawable/icon_ionic_ios_arrow_down"
         android:visibility="gone"
+        android:src="@drawable/icon_ionic_ios_arrow_down"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/cart"
+        android:layout_width="@dimen/_22sdp"
+        android:layout_height="@dimen/_22sdp"
+        android:layout_marginTop="@dimen/_28sdp"
+        android:layout_marginBottom="@dimen/_6sdp"
+        android:src="@drawable/icon_cart"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="@dimen/_16sdp"
+        app:layout_constraintStart_toEndOf="@+id/iv_back"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView

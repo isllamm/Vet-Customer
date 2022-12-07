@@ -3,6 +3,7 @@ package com.tawajood.vet.ui.main.pets
 import PrefsHelper
 import android.Manifest
 import android.app.Activity
+import android.app.DatePickerDialog
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
@@ -26,6 +27,7 @@ import com.tawajood.vet.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import java.io.File
+import java.util.*
 
 @AndroidEntryPoint
 class AddPetFragment : Fragment(R.layout.fragment_add_pet) {
@@ -38,6 +40,7 @@ class AddPetFragment : Fragment(R.layout.fragment_add_pet) {
     private lateinit var typeAdapter: ArrayAdapter<String>
 
     private var petPic: File? = null
+    private var date: String = ""
 
     private var types = mutableListOf<PetTypes>()
 
@@ -61,6 +64,32 @@ class AddPetFragment : Fragment(R.layout.fragment_add_pet) {
     }
 
     private fun onClick() {
+        binding.monthEt.setOnClickListener {
+            val c = Calendar.getInstance()
+            val year = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+
+
+            val dpd = DatePickerDialog(
+                requireContext(),
+                R.style.DialogThemeCalender,
+                DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+
+                    // Display Selected date
+                    binding.yearEt.setText(year.toString())
+                    binding.monthEt.setText(monthOfYear.toString())
+                    binding.dayEt.setText(dayOfMonth.toString())
+
+                    date = "$year-$monthOfYear-$dayOfMonth"
+                },
+                year,
+                month,
+                day
+            )
+
+            dpd.show()
+        }
         binding.btnSave.setOnClickListener {
             viewModel.addPet(
                 PetBody(
@@ -71,7 +100,7 @@ class AddPetFragment : Fragment(R.layout.fragment_add_pet) {
                     binding.genderSpinner.selectedItemPosition,
                     petPic,
                     types[binding.typeSpinner.selectedItemPosition].id,
-                    binding.yearEt.text.toString() + "-" + { binding.birthDaySpinner.selectedItemPosition + 1 } + "-" + binding.dayEt.text.toString(),
+                    date,
                     binding.sterileSpinner.selectedItemPosition,
                     binding.petBreedEt.text.toString()
                 )

@@ -42,8 +42,8 @@ class SupportFragment : Fragment(R.layout.fragment_support) {
                     }
                     is Resource.Loading -> parent.showLoading()
                     is Resource.Success -> {
-                        binding.tvPhone.text = it.data!!.contact_us.phone
-                        binding.tvMail.text = it.data.contact_us.complaint_email
+                        binding.tvPhone.text = it.data!!.contact.phone
+                        binding.tvMail.text = it.data.contact.complaint_email
 
                     }
                 }

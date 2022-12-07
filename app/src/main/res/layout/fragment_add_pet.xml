@@ -342,16 +342,19 @@
             app:layout_constraintTop_toBottomOf="@+id/textView7">
 
 
-            <Spinner
-                android:id="@+id/birthDay_spinner"
+            <EditText
+                android:id="@+id/month_et"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_46sdp"
-                android:dropDownVerticalOffset="@dimen/_46sdp"
-                android:entries="@array/months"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="@string/month"
                 android:importantForAutofill="no"
+                android:inputType="date"
                 android:paddingHorizontal="@dimen/_8sdp"
-                android:popupBackground="@color/white"
-                android:theme="@style/mySpinnerItemStyle" />
+                android:textAlignment="viewStart"
+                android:textColor="@color/light_black"
+                android:textDirection="ltr"
+                android:textSize="@dimen/_12ssp" />
 
         </LinearLayout>
 
@@ -360,9 +363,7 @@
             android:id="@+id/ll_1"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_46sdp"
-            android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginEnd="10dp"
             android:baselineAligned="false"
             android:orientation="horizontal"
             android:weightSum="2"
@@ -375,7 +376,7 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_46sdp"
                 android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="@dimen/_8sdp"
                 android:layout_weight="1"
                 android:background="@drawable/full_border_radius_12"
                 android:orientation="horizontal"
@@ -391,7 +392,7 @@
                     android:background="@null"
                     android:hint="@string/day"
                     android:importantForAutofill="no"
-                    android:inputType="number"
+                    android:inputType="date"
                     android:paddingHorizontal="@dimen/_8sdp"
                     android:textAlignment="viewStart"
                     android:textColor="@color/light_black"
@@ -405,7 +406,7 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_46sdp"
                 android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="@dimen/_8sdp"
                 android:layout_weight="1"
                 android:background="@drawable/full_border_radius_12"
                 android:orientation="horizontal"
@@ -421,12 +422,12 @@
                     android:background="@null"
                     android:hint="@string/year"
                     android:importantForAutofill="no"
-                    android:inputType="number"
                     android:paddingHorizontal="@dimen/_8sdp"
                     android:textAlignment="viewStart"
                     android:textColor="@color/light_black"
                     android:textDirection="ltr"
-                    android:textSize="@dimen/_12ssp" />
+                    android:textSize="@dimen/_12ssp"
+                    android:inputType="date" />
 
             </LinearLayout>
         </LinearLayout>
@@ -442,12 +443,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ll_1">
 
+            <ImageView
+                android:src="@drawable/test1"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"/>
+
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/img"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_12sdp"
+                android:scaleType="fitXY"
+                android:elevation="@dimen/_8sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ll_1"
                 app:riv_corner_radius="@dimen/_35sdp" />
