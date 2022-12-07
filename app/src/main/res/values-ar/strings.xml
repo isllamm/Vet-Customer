@@ -198,5 +198,8 @@
     <string name="choose_vaccination">اختر التطعيم</string>
     <string name="vaccination_date1">تاريخ التطعيم</string>
     <string name="vaccination_added">تم اضافة التطعيم بنجاح</string>
+    <string name="report_date">تاريخ التقرير:</string>
+    <string name="details">التفاصيل</string>
+    <string name="medicine_date">تاريخ الوصفة:</string>
 
 </resources>

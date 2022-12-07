@@ -199,6 +199,9 @@
     <string name="choose_vaccination">Choose Vaccination</string>
     <string name="vaccination_date1">Vaccination date</string>
     <string name="vaccination_added">Vaccination added</string>
+    <string name="report_date">Report Date:</string>
+    <string name="details">Details</string>
+    <string name="medicine_date">medicine date:</string>
 
 
 </resources>

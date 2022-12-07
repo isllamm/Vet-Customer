@@ -13,9 +13,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.tawajood.vet.R
+import com.tawajood.vet.adapters.PetMedicinesAdapter
+import com.tawajood.vet.adapters.PreviousConsultantAdapter
 import com.tawajood.vet.adapters.VaccinationAdapter
 import com.tawajood.vet.databinding.FragmentAddPetBinding
 import com.tawajood.vet.databinding.FragmentPetInfoBinding
+import com.tawajood.vet.pojo.Consultant
 import com.tawajood.vet.pojo.Pet
 import com.tawajood.vet.pojo.PetTypes
 import com.tawajood.vet.pojo.Vaccinations
@@ -38,7 +41,10 @@ class PetInfoFragment : Fragment(R.layout.fragment_pet_info) {
     private var petId by Delegates.notNull<String>()
     private lateinit var myPet: Pet
     private var vaccinations = mutableListOf<Vaccinations>()
+    private var consultant = mutableListOf<Consultant>()
     private lateinit var vaccinationAdapter: VaccinationAdapter
+    private lateinit var petMedicinesAdapter: PetMedicinesAdapter
+    private lateinit var previousConsultantAdapter: PreviousConsultantAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,7 +56,29 @@ class PetInfoFragment : Fragment(R.layout.fragment_pet_info) {
         setupUI()
         observeData()
         setupVaccinations()
+        setupPetMedicines()
+        setupPreviousConsultant()
 
+    }
+
+    private fun setupPreviousConsultant() {
+        previousConsultantAdapter =
+            PreviousConsultantAdapter(object : PreviousConsultantAdapter.OnItemClick {
+                override fun onItemClickListener(position: Int) {
+
+                }
+            })
+        binding.rvPreviousConsultant.adapter = previousConsultantAdapter
+    }
+
+    private fun setupPetMedicines() {
+        petMedicinesAdapter = PetMedicinesAdapter(object : PetMedicinesAdapter.OnItemClick {
+            override fun onItemClickListener(position: Int) {
+
+            }
+
+        })
+        binding.rvMedicine.adapter = petMedicinesAdapter
     }
 
     private fun setupVaccinations() {
@@ -151,6 +179,7 @@ class PetInfoFragment : Fragment(R.layout.fragment_pet_info) {
                     is Resource.Loading -> parent.showLoading()
                     is Resource.Success -> {
                         vaccinations.clear()
+                        consultant.clear()
                         myPet = it.data!!.pet
 
                         Glide.with(requireContext()).load(myPet.image).into(binding.img)
@@ -160,6 +189,10 @@ class PetInfoFragment : Fragment(R.layout.fragment_pet_info) {
 
                         vaccinations = myPet.vaccinations!!
                         vaccinationAdapter.vaccinations = vaccinations
+
+                        consultant = myPet.requests!!
+                        previousConsultantAdapter.consultant = consultant
+                        petMedicinesAdapter.consultant = consultant
                     }
                 }
             }
