@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.ivNotification.isVisible = isVisible
         binding.toolbar.title.isVisible = !isVisible
         binding.toolbar.ivBack.isVisible = !isVisible
-        binding.toolbar.cart.isVisible = !isVisible
+        binding.toolbar.cart.isVisible = false
 
     }
 

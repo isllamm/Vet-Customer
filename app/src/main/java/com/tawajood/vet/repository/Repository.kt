@@ -116,4 +116,10 @@ constructor(private val api: RetrofitApi) {
 
     suspend fun getCategories() =
         api.getCategories(PrefsHelper.getLanguage())
+
+    suspend fun getPetById(petId: String) =
+        api.getPetById(PrefsHelper.getLanguage(), PrefsHelper.getToken(), petId)
+
+    suspend fun addVaccination(petId: String, date: String, type: String) =
+        api.addVaccination(PrefsHelper.getLanguage(), PrefsHelper.getToken(), petId, date, type)
 }

@@ -12,7 +12,7 @@ data class Pet(
     val type: String?,
     val created_at: String?,
     val requests: MutableList<Consultant>?,
-    val vaccinations: MutableList<Vaccination>?,
+    val vaccinations: MutableList<Vaccinations>?,
     val birth_date: String?,
     val sterile: Int?,
     val breed: String?,

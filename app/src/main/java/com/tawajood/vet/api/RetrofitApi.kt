@@ -155,4 +155,22 @@ interface RetrofitApi {
         @Header("lang") lang: String,
     ): Response<MainResponse<CategoriesResponse>>
 
+    @FormUrlEncoded
+    @POST("pet-by-id")
+    suspend fun getPetById(
+        @Header("lang") lang: String,
+        @Header("token") token: String,
+        @Field("pet_id") pet_id: String
+    ): Response<MainResponse<PetResponse>>
+
+    @FormUrlEncoded
+    @POST("add-vaccination")
+    suspend fun addVaccination(
+        @Header("lang") lang: String,
+        @Header("token") token: String,
+        @Field("pet_id") pet_id: String,
+        @Field("date") date: String,
+        @Field("type") type: String
+    ): Response<MainResponse<Any>>
+
 }

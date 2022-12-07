@@ -191,6 +191,14 @@
     <string name="search">Search</string>
     <string name="previous_orders">Previous Orders</string>
     <string name="add_to_cart">Add to Cart</string>
+    <string name="vaccination_book">Vaccination book</string>
+    <string name="previous_consultant2">Previous Consultant</string>
+    <string name="add_vaccination">add vaccination</string>
+    <string name="vaccination_date">Vaccination Date:</string>
+    <string name="vaccination_name">Vaccination Name:</string>
+    <string name="choose_vaccination">Choose Vaccination</string>
+    <string name="vaccination_date1">Vaccination date</string>
+    <string name="vaccination_added">Vaccination added</string>
 
 
 </resources>

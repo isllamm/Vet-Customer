@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_80sdp"
+    android:layout_marginStart="@dimen/_12sdp"
+    android:layout_marginTop="@dimen/_8sdp"
+    android:layout_marginEnd="@dimen/_12sdp"
+    android:layout_marginBottom="@dimen/_8sdp"
+    android:elevation="@dimen/_24sdp"
+    app:cardCornerRadius="@dimen/_8sdp"
+    app:strokeColor="@color/grey_200"
+    app:strokeWidth="0.2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="@string/vaccination_date"
+            android:textColor="@color/dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:textColor="@color/dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv1"
+            app:layout_constraintStart_toEndOf="@+id/tv1"
+            app:layout_constraintTop_toTopOf="@+id/tv1" />
+
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:text="@string/vaccination_name"
+            android:textColor="@color/dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv1"
+            app:layout_constraintTop_toBottomOf="@+id/tv1" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:textColor="@color/dark_blue"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv2"
+            app:layout_constraintStart_toEndOf="@+id/tv2"
+            app:layout_constraintTop_toTopOf="@+id/tv2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

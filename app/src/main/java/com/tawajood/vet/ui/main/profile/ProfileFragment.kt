@@ -57,6 +57,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.clTc.setOnClickListener {
             parent.navController.navigate(R.id.termsFragment)
         }
+
+        binding.clLogout.setOnClickListener {
+            parent.logout()
+        }
     }
 
     private fun observeData() {

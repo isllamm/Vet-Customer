@@ -189,5 +189,14 @@
     <string name="pharmacy">الصيدلية</string>
     <string name="search">ابحث</string>
     <string name="previous_orders">الطلبات السابقة</string>
-    <string name="add_to_cart">Add to Cart</string>
+    <string name="add_to_cart">اضف الى سلة المشتريات</string>
+    <string name="vaccination_book">دفتر التطعيمات</string>
+    <string name="previous_consultant2">التقارير السابقة</string>
+    <string name="add_vaccination">اضافة تطعيم</string>
+    <string name="vaccination_date">تاريخ التطعيم:</string>
+    <string name="vaccination_name">اسم التطعيم:</string>
+    <string name="choose_vaccination">اختر التطعيم</string>
+    <string name="vaccination_date1">تاريخ التطعيم</string>
+    <string name="vaccination_added">تم اضافة التطعيم بنجاح</string>
+
 </resources>

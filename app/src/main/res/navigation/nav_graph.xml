@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_myPetsFragment_to_addPetFragment"
             app:destination="@id/addPetFragment" />
+        <action
+            android:id="@+id/action_myPetsFragment_to_petInfoFragment"
+            app:destination="@id/petInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/pharmacyFragment"
@@ -99,4 +102,18 @@
         android:name="com.tawajood.vet.ui.main.pets.AddPetFragment"
         android:label="fragment_add_pet"
         tools:layout="@layout/fragment_add_pet" />
+    <fragment
+        android:id="@+id/petInfoFragment"
+        android:name="com.tawajood.vet.ui.main.pets.PetInfoFragment"
+        android:label="fragment_pet_info"
+        tools:layout="@layout/fragment_pet_info" >
+        <action
+            android:id="@+id/action_petInfoFragment_to_addVaccinationDialogFragment"
+            app:destination="@id/addVaccinationDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/addVaccinationDialogFragment"
+        android:name="com.tawajood.vet.ui.main.pets.AddVaccinationDialogFragment"
+        android:label="fragment_add_vaccination_dialog"
+        tools:layout="@layout/fragment_add_vaccination_dialog" />
 </navigation>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".ui.main.pets.PetInfoFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/img"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius="@dimen/_45sdp" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:textColor="@color/dark_blue"
+            android:textSize="@dimen/_13ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/img"
+            app:layout_constraintStart_toStartOf="@+id/img"
+            app:layout_constraintTop_toBottomOf="@+id/img" />
+
+        <TextView
+            android:id="@+id/details"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:gravity="center"
+            android:textColor="@color/light_black"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintEnd_toEndOf="@+id/name"
+            app:layout_constraintStart_toStartOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_c"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_56sdp"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_36sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:baselineAligned="false"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/details">
+
+            <FrameLayout
+                android:id="@+id/vaccination_frame"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_margin="@dimen/_4sdp"
+                android:layout_weight="1"
+                android:background="@drawable/full_border_radius_16_blue">
+
+                <TextView
+                    android:id="@+id/tv_vaccination"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:padding="@dimen/_2sdp"
+                    android:text="@string/vaccination_book"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10ssp" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/previous_consultant_frame"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_margin="@dimen/_4sdp"
+                android:layout_weight="1"
+                android:background="@drawable/full_border_radius_16">
+
+                <TextView
+                    android:id="@+id/tv_previous_consultant"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:padding="@dimen/_2sdp"
+                    android:text="@string/previous_consultant2"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/_10ssp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/medicines_frame"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_margin="@dimen/_4sdp"
+                android:layout_weight="1"
+                android:background="@drawable/full_border_radius_16">
+
+                <TextView
+                    android:id="@+id/tv_medicines"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/medicines"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/_10ssp" />
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_vaccination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_c" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_previous_consultant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_c" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_medicine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_c" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_add_vaccination"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_46sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_46sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:backgroundTint="@color/light_blue"
+            android:text="@string/add_vaccination"
+            android:textAlignment="viewStart"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            app:cornerRadius="@dimen/_8sdp"
+            app:icon="@drawable/icon_plus"
+            app:iconGravity="end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_vaccination" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

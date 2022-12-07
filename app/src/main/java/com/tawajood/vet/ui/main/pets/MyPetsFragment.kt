@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.tawajood.vet.R
@@ -15,6 +16,7 @@ import com.tawajood.vet.databinding.FragmentNotificationsBinding
 import com.tawajood.vet.pojo.Pet
 import com.tawajood.vet.ui.main.MainActivity
 import com.tawajood.vet.ui.main.notifications.NotificationsViewModel
+import com.tawajood.vet.utils.Constants
 import com.tawajood.vet.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -49,7 +51,11 @@ class MyPetsFragment : Fragment(R.layout.fragment_my_pets) {
     private fun setupPets() {
         myPetsAdapter = MyPetsAdapter(object : MyPetsAdapter.OnItemClick {
             override fun onItemClickListener(position: Int) {
-
+                parent.navController.navigate(
+                    R.id.petInfoFragment, bundleOf(
+                        Constants.PET_ID to myPets[position].id.toString()
+                    )
+                )
             }
 
         })
