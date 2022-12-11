@@ -203,5 +203,9 @@
     <string name="details">Details</string>
     <string name="medicine_date">medicine date:</string>
 
+    <string name="doctor_profile">Doctor profile</string>
+    <string name="licence_number">Licence Number</string>
+    <string name="request_consultation">Request Consultation</string>
+    <string name="show_all">Show All</string>
 
 </resources>

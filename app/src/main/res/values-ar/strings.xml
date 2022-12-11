@@ -201,5 +201,8 @@
     <string name="report_date">تاريخ التقرير:</string>
     <string name="details">التفاصيل</string>
     <string name="medicine_date">تاريخ الوصفة:</string>
-
+    <string name="doctor_profile">الملف الشخصي للطبيب</string>
+    <string name="licence_number">رقم الرخصة المهمنية</string>
+    <string name="request_consultation">طلب استشارة</string>
+    <string name="show_all">عرض الكل</string>
 </resources>
