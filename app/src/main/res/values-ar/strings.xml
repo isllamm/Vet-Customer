@@ -205,4 +205,10 @@
     <string name="licence_number">رقم الرخصة المهمنية</string>
     <string name="request_consultation">طلب استشارة</string>
     <string name="show_all">عرض الكل</string>
+    <string name="consultation_request">طلب إستشارة</string>
+    <string name="counseling_type">Counseling type</string>
+    <string name="select_the_duration_of_the_consultation">Select the duration of the consultation</string>
+    <string name="select_the_date">Select the date</string>
+    <string name="select_the_time">select the time</string>
+
 </resources>

@@ -207,5 +207,10 @@
     <string name="licence_number">Licence Number</string>
     <string name="request_consultation">Request Consultation</string>
     <string name="show_all">Show All</string>
+    <string name="consultation_request">Consultation request</string>
+    <string name="counseling_type">Counseling type</string>
+    <string name="select_the_duration_of_the_consultation">Select the duration of the consultation</string>
+    <string name="select_the_date">Select the date</string>
+    <string name="select_the_time">select the time</string>
 
 </resources>

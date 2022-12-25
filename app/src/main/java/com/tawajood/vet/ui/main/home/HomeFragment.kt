@@ -55,7 +55,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         mostRatedDoctorsAdapter =
             MostRatedDoctorsAdapter(object : MostRatedDoctorsAdapter.OnItemClick {
                 override fun onItemClickListener(position: Int) {
-
+                    Log.d("islam", "onItemClickListener: ${mostDoctors[position].id}")
+                    parent.navController.navigate(
+                        R.id.doctorProfileFragment, bundleOf(
+                            Constants.CLINIC to mostDoctors[position].id
+                        )
+                    )
                 }
 
             })
@@ -66,7 +71,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun setupOnlineDoctors() {
         onlineDoctorsAdapter = OnlineDoctorsAdapter(object : OnlineDoctorsAdapter.OnItemClick {
             override fun onItemClickListener(position: Int) {
-
+                parent.navController.navigate(
+                    R.id.doctorProfileFragment, bundleOf(
+                        Constants.CLINIC to onlineDoctors[position].id
+                    )
+                )
             }
 
         })

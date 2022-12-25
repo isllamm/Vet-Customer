@@ -24,4 +24,5 @@ data class Clinic(
     val active: Int,
     val notifiable: Int,
     val locale: String,
+    val recommendations:MutableList<Recommendation>
 )

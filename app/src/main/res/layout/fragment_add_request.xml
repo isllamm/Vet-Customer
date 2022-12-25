@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".ui.main.doctor_profile.DoctorProfileFragment">
+    android:fitsSystemWindows="true"
+    tools:context=".ui.main.requests.AddRequestFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -42,13 +43,15 @@
             android:src="@drawable/ic_star"
             app:layout_constraintEnd_toEndOf="@+id/tv_name"
             app:layout_constraintStart_toStartOf="@+id/tv_name"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_rate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_4sdp"
+            android:text="11"
             android:textColor="@color/dark_blue"
             android:textSize="@dimen/_8ssp"
             app:layout_constraintBottom_toBottomOf="@+id/star"
@@ -131,92 +134,129 @@
 
 
         <TextView
-            android:id="@+id/tv_details"
+            android:id="@+id/textView41"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_32sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="@string/counseling_type"
             android:textColor="@color/light_black"
             android:textSize="@dimen/_12ssp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_address" />
 
-        <View
-            android:id="@+id/v1"
+        <RelativeLayout
+            android:id="@+id/rl_et_type"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_1sdp"
-            android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_24sdp"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:background="@color/divider"
-            android:textSize="@dimen/_12ssp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_details" />
-
-        <TextView
-            android:id="@+id/tv2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:text="@string/show_all"
-            android:textColor="@color/light_blue"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/v1" />
-
-        <TextView
-            android:id="@+id/tv3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:text="@string/comments"
-            android:textColor="@color/dark_blue"
-            android:textSize="@dimen/_14ssp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/v1" />
-
-        <LinearLayout
-            android:id="@+id/ll_comments"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_8sdp"
-            android:orientation="vertical"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:background="@drawable/full_border_radius_12"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv3">
+            app:layout_constraintTop_toBottomOf="@+id/textView41">
 
-            <include
-                android:id="@+id/comment1"
-                layout="@layout/item_comment" />
+            <Spinner
+                android:id="@+id/type_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:dropDownVerticalOffset="@dimen/_40sdp"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:popupBackground="@color/white"
+                android:theme="@style/mySpinnerItemStyle" />
 
-            <include
-                android:id="@+id/comment2"
-                layout="@layout/item_comment" />
-        </LinearLayout>
+        </RelativeLayout>
 
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_46sdp"
+        <TextView
+            android:id="@+id/textView411"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:layout_marginBottom="@dimen/_12sdp"
-            android:backgroundTint="@color/light_blue"
-            android:text="@string/request_consultation"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="@string/select_the_duration_of_the_consultation"
+            android:textColor="@color/light_black"
             android:textSize="@dimen/_12ssp"
-            android:textStyle="bold"
-            app:cornerRadius="@dimen/_10sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl_et_type" />
+
+        <RelativeLayout
+            android:id="@+id/rl_et_time"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:background="@drawable/full_border_radius_12"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView411">
+
+            <Spinner
+                android:id="@+id/time_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:dropDownVerticalOffset="@dimen/_40sdp"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:popupBackground="@color/white"
+                android:theme="@style/mySpinnerItemStyle" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="@string/select_the_date"
+            android:textColor="@color/light_black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl_et_time" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_calender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:elevation="@dimen/_8sdp"
+            app:cardCornerRadius="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:strokeWidth="0.5dp"
+            app:strokeColor="@color/grey_300">
+
+            <CalendarView
+                android:id="@+id/calender"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:padding="@dimen/_2sdp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="@string/select_the_time"
+            android:textColor="@color/light_black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_calender" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

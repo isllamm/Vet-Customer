@@ -173,4 +173,15 @@ interface RetrofitApi {
         @Field("type") type: String
     ): Response<MainResponse<Any>>
 
+    @FormUrlEncoded
+    @POST("get-clinic-by-id")
+    suspend fun getClinicById(
+        @Header("lang") lang: String,
+        @Field("id") clinicId: String,
+    ): Response<MainResponse<ClinicsResponse>>
+
+    @GET("request-types")
+    suspend fun getRequestTypes(
+        @Header("lang") lang: String,
+    ): Response<MainResponse<RequestTypesResponse>>
 }

@@ -116,4 +116,14 @@
         android:name="com.tawajood.vet.ui.main.pets.AddVaccinationDialogFragment"
         android:label="fragment_add_vaccination_dialog"
         tools:layout="@layout/fragment_add_vaccination_dialog" />
+    <fragment
+        android:id="@+id/doctorProfileFragment"
+        android:name="com.tawajood.vet.ui.main.doctor_profile.DoctorProfileFragment"
+        android:label="fragment_doctor_profile"
+        tools:layout="@layout/fragment_doctor_profile" />
+    <fragment
+        android:id="@+id/addRequestFragment"
+        android:name="com.tawajood.vet.ui.main.requests.AddRequestFragment"
+        android:label="fragment_add_request"
+        tools:layout="@layout/fragment_add_request" />
 </navigation>
