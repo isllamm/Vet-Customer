@@ -16,4 +16,5 @@ data class Pet(
     val birth_date: String?,
     val sterile: Int?,
     val breed: String?,
+    var isSelected: Boolean = false
 )

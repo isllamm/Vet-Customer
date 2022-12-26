@@ -206,9 +206,16 @@
     <string name="request_consultation">طلب استشارة</string>
     <string name="show_all">عرض الكل</string>
     <string name="consultation_request">طلب إستشارة</string>
-    <string name="counseling_type">Counseling type</string>
-    <string name="select_the_duration_of_the_consultation">Select the duration of the consultation</string>
-    <string name="select_the_date">Select the date</string>
-    <string name="select_the_time">select the time</string>
+    <string name="counseling_type">نوع الاستشارة</string>
+    <string name="select_the_duration_of_the_consultation">حدد مدة الاستشارة</string>
+    <string name="select_the_date">حدد التاريخ</string>
+    <string name="select_the_time">حدد الوقت</string>
+    <string name="no_times">لا يوجد مواعيد متاحة</string>
+    <string name="locate_the_home_address_via_google_maps">حدد عنوان المنزل عن طريق جوجل ماب</string>
+    <string name="consultation_details">تفاصيل الاستشارة</string>
+    <string name="send">إرسال</string>
+    <string name="attachments">مرفقات</string>
+    <string name="loading">جاري التحميل</string>
+    <string name="error_location_address">غير قادر على جلب الموقع</string>
 
 </resources>

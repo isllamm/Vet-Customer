@@ -184,4 +184,14 @@ interface RetrofitApi {
     suspend fun getRequestTypes(
         @Header("lang") lang: String,
     ): Response<MainResponse<RequestTypesResponse>>
+
+    @FormUrlEncoded
+    @POST("get-times-unreserved")
+    suspend fun getTimesUnreserved(
+        @Header("lang") lang: String,
+        @Header("token") token: String,
+        @Field("clinic_id") clinic_id: String,
+        @Field("clinic_day_id") clinic_day_id: String,
+        @Field("date") date: String,
+    ): Response<MainResponse<TimesResponse>>
 }

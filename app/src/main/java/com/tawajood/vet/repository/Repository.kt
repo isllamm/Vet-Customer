@@ -128,4 +128,13 @@ constructor(private val api: RetrofitApi) {
 
     suspend fun getRequestTypes() =
         api.getRequestTypes(PrefsHelper.getLanguage())
+
+    suspend fun getTimesUnreserved(clinic_id: String, clinic_day_id: String, date: String) =
+        api.getTimesUnreserved(
+            PrefsHelper.getLanguage(),
+            PrefsHelper.getToken(),
+            clinic_id,
+            clinic_day_id,
+            date
+        )
 }
