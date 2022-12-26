@@ -194,4 +194,14 @@ interface RetrofitApi {
         @Field("clinic_day_id") clinic_day_id: String,
         @Field("date") date: String,
     ): Response<MainResponse<TimesResponse>>
+
+    @Multipart
+    @JvmSuppressWildcards
+    @POST("add-request")
+    suspend fun addRequest(
+        @Header("token") token: String,
+        @Header("lang") lang: String,
+        @PartMap requestBody: Map<String, RequestBody>,
+        @Part images: Array<MultipartBody.Part>
+    ): Response<MainResponse<Any>>
 }

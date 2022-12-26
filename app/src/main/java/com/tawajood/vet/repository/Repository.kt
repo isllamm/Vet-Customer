@@ -2,9 +2,7 @@ package com.tawajood.vet.repository
 
 import PrefsHelper
 import com.tawajood.vet.api.RetrofitApi
-import com.tawajood.vet.pojo.MainResponse
-import com.tawajood.vet.pojo.PetBody
-import com.tawajood.vet.pojo.RegisterBody
+import com.tawajood.vet.pojo.*
 import com.tawajood.vet.utils.toMap
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -137,4 +135,28 @@ constructor(private val api: RetrofitApi) {
             clinic_day_id,
             date
         )
+
+
+    suspend fun addRequest(
+        addRequestBody: AddRequestBody, images: ImagesBody
+    ): Response<MainResponse<Any>> {
+
+        val imagesParts: MutableList<MultipartBody.Part> = mutableListOf()
+        images.images!!.forEach {
+            imagesParts.add(
+                MultipartBody.Part.createFormData(
+                    "images[]",
+                    it.name,
+                    it.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+                )
+            )
+        }
+
+        return api.addRequest(
+            PrefsHelper.getToken(),
+            PrefsHelper.getLanguage(),
+            addRequestBody.toMap(),
+            imagesParts.toTypedArray()
+        )
+    }
 }

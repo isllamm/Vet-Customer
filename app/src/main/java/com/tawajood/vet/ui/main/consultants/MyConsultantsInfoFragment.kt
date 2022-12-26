@@ -76,7 +76,9 @@ class MyConsultantsInfoFragment : Fragment(R.layout.fragment_my_consultants_info
     }
 
     private fun onClick() {
-
+        binding.btnPay.setOnClickListener {
+            parent.navController.navigate(R.id.feePaymentFragment)
+        }
     }
 
     private fun isPending(isTrue: Boolean) {

@@ -77,6 +77,8 @@ class AddRequestFragment : Fragment(R.layout.fragment_add_request) {
     private lateinit var myPetsAdapter: SelectPetAdapter
     private var myPets = mutableListOf<Pet>()
     private var petId:String = "0"
+    private val imagesFiles = mutableListOf<File>()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -115,6 +117,9 @@ class AddRequestFragment : Fragment(R.layout.fragment_add_request) {
     }
 
     private fun onClick() {
+        binding.btn.setOnClickListener {
+            imagesFiles.add(petPic!!)
+        }
 
         binding.cardAdd.setOnClickListener {
             parent.navController.navigate(R.id.addPetFragment)

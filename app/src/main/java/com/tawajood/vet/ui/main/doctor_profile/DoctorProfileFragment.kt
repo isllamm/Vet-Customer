@@ -56,9 +56,11 @@ class DoctorProfileFragment : Fragment(R.layout.fragment_doctor_profile) {
 
     private fun onClick() {
         binding.btn.setOnClickListener {
-            parent.navController.navigate(R.id.addRequestFragment, bundleOf(
-                Constants.CLINIC to id
-            ))
+            parent.navController.navigate(
+                R.id.addRequestFragment, bundleOf(
+                    Constants.CLINIC to id
+                )
+            )
         }
     }
 
@@ -88,11 +90,23 @@ class DoctorProfileFragment : Fragment(R.layout.fragment_doctor_profile) {
                                 doctorInfo.consultation_fees.toString() + getString(R.string.Rs)
                             binding.time.text = doctorInfo.consultation_duration + " دقيقة "
                             binding.tvDetails.text = doctorInfo.details
-                            if (doctorInfo.recommendations.isNotEmpty()) {
+                            if (doctorInfo.recommendations.isNotEmpty() && (doctorInfo.recommendations.size) >= 2) {
                                 recommendations = doctorInfo.recommendations
                                 binding.llComments.isVisible = true
                                 binding.tv3.isVisible = true
                                 binding.tv2.isVisible = true
+                                ////1
+                                binding.comment1.commentt.text = recommendations[0].comment
+                                binding.comment1.tvRate.text = recommendations[0].rate.toString()
+                                binding.comment1.name.text = recommendations[0].user.name
+                                Glide.with(requireContext()).load(recommendations[0].user.image)
+                                    .into(binding.comment1.img)
+                                ///2
+                                binding.comment2.commentt.text = recommendations[1].comment
+                                binding.comment2.tvRate.text = recommendations[1].rate.toString()
+                                binding.comment2.name.text = recommendations[1].user.name
+                                Glide.with(requireContext()).load(recommendations[1].user.image)
+                                    .into(binding.comment2.img)
 
                             } else {
                                 binding.llComments.isVisible = false

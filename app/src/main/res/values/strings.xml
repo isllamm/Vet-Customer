@@ -34,6 +34,8 @@
     <string name="payments">Payments</string>
     <string name="profile">Profile</string>
     <string name="technical_support">Technical support</string>
+    <string name="Fee_Payment">Fee Payment</string>
+
     <string name="terms_and_conditions">Terms and conditions</string>
     <string name="about_us">About Us</string>
     <string name="notifications">Notifications</string>
