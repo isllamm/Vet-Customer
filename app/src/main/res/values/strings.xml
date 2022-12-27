@@ -221,5 +221,6 @@
     <string name="attachments">attachments</string>
     <string name="loading">loading..</string>
     <string name="error_location_address">Unknown Location</string>
+    <string name="select_specialty">Select specialty</string>
 
 </resources>

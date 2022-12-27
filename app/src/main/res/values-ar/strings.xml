@@ -218,5 +218,6 @@
     <string name="attachments">مرفقات</string>
     <string name="loading">جاري التحميل</string>
     <string name="error_location_address">غير قادر على جلب الموقع</string>
+    <string name="select_specialty">حدد التخصص</string>
 
 </resources>

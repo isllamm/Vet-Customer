@@ -1,5 +1,6 @@
 package com.tawajood.vet.ui.main.requests
 
+import PrefsHelper
 import ToastUtils
 import android.Manifest
 import android.annotation.SuppressLint
@@ -8,6 +9,7 @@ import android.content.pm.PackageManager
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,6 +38,7 @@ import com.tawajood.vet.databinding.FragmentAddRequestBinding
 import com.tawajood.vet.databinding.FragmentDoctorProfileBinding
 import com.tawajood.vet.pojo.*
 import com.tawajood.vet.ui.main.MainActivity
+import com.tawajood.vet.ui.main.dialogs.ResultDialogFragment
 import com.tawajood.vet.ui.main.doctor_profile.DoctorProfileViewModel
 import com.tawajood.vet.utils.Constants
 import com.tawajood.vet.utils.Resource
@@ -64,9 +67,10 @@ class AddRequestFragment : Fragment(R.layout.fragment_add_request) {
     private var clinicDay = mutableListOf<ClinicDay>()
     private var types = mutableListOf<RequestType>()
     private var times = mutableListOf<Times>()
-
+    private var specializations = mutableListOf<Specialization>()
     private lateinit var typesAdapter: ArrayAdapter<String>
     private lateinit var timesAdapter: ArrayAdapter<String>
+    private lateinit var speAdapter: ArrayAdapter<String>
 
     private lateinit var date: String
     private var lat: Double? = null
@@ -76,7 +80,7 @@ class AddRequestFragment : Fragment(R.layout.fragment_add_request) {
     private var petPic: File? = null
     private lateinit var myPetsAdapter: SelectPetAdapter
     private var myPets = mutableListOf<Pet>()
-    private var petId:String = "0"
+    private var petId: String = "0"
     private val imagesFiles = mutableListOf<File>()
 
 
@@ -114,11 +118,64 @@ class AddRequestFragment : Fragment(R.layout.fragment_add_request) {
         timesAdapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item)
         binding.timesSpinner.adapter = timesAdapter
+
+        speAdapter =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item)
+        binding.speSpinner.adapter = speAdapter
+    }
+
+    private fun validate(): Boolean {
+        if (petId == "0") {
+            ToastUtils.showToast(requireContext(), "الحيوان مطلوب")
+            return false
+        }
+        if (TextUtils.isEmpty(binding.detailsEt.text)) {
+            ToastUtils.showToast(requireContext(), "التفاصيل مطلوبه")
+
+            return false
+        }
+
+        if (TextUtils.isEmpty(binding.tvAddress.text)) {
+            ToastUtils.showToast(requireContext(), "العنوان مطلوب")
+
+            return false
+        }
+        if (lat == null || lng == null) {
+            ToastUtils.showToast(requireContext(), "برجاء تفعيل GPS للحصول على العنوان الصحيح")
+
+            return false
+        }
+        if (imagesFiles.isEmpty()) {
+            ToastUtils.showToast(requireContext(), "الرجاء ارفاق صورة")
+
+            return false
+        }
+        return true
     }
 
     private fun onClick() {
         binding.btn.setOnClickListener {
             imagesFiles.add(petPic!!)
+            if (validate()) {
+                viewModel.addRequest(
+                    AddRequestBody(
+                        PrefsHelper.getUserId(),
+                        id.toInt(),
+                        petId.toInt(),
+                        specializations[binding.speSpinner.selectedItemPosition].specialization_id,
+                        types[binding.typeSpinner.selectedItemPosition].id,
+                        binding.detailsEt.text.toString(),
+                        times[binding.timesSpinner.selectedItemPosition].clinic_day_id,
+                        times[binding.timesSpinner.selectedItemPosition].id,
+                        binding.tvAddress.text.toString(),
+                        lat!!,
+                        lng!!,
+                        date
+                    ),
+                    ImagesBody(imagesFiles)
+                )
+            }
+
         }
 
         binding.cardAdd.setOnClickListener {
@@ -208,7 +265,12 @@ class AddRequestFragment : Fragment(R.layout.fragment_add_request) {
                             binding.time.text = doctorInfo.consultation_duration + " دقيقة "
                             if (doctorInfo.clinic_days.isNotEmpty()) {
                                 clinicDay = doctorInfo.clinic_days
-
+                            }
+                            if (doctorInfo.specializations.isNotEmpty()) {
+                                specializations = doctorInfo.specializations
+                                specializations.forEach { item ->
+                                    speAdapter.add(item.specialization.name)
+                                }
                             }
 
                         }
@@ -235,6 +297,32 @@ class AddRequestFragment : Fragment(R.layout.fragment_add_request) {
                                 typesAdapter.add(item.name)
                             }
                         }
+
+                    }
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.addRequestFlow.collectLatest {
+                parent.hideLoading()
+                when (it) {
+                    is Resource.Error -> {
+                        ToastUtils.showToast(requireContext(), it.message.toString())
+                    }
+                    is Resource.Idle -> {
+
+                    }
+                    is Resource.Loading -> parent.showLoading()
+                    is Resource.Success -> {
+                        ResultDialogFragment.newInstance(
+                            "تم طلب الاستشارة بنجاح",
+                            R.drawable.done
+                        )
+                            .show(
+                                parentFragmentManager,
+                                ResultDialogFragment::class.java.canonicalName
+                            )
 
                     }
                 }

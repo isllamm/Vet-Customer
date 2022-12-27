@@ -51,7 +51,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_4sdp"
-            android:text="11"
             android:textColor="@color/dark_blue"
             android:textSize="@dimen/_8ssp"
             app:layout_constraintBottom_toBottomOf="@+id/star"
@@ -102,6 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
             android:text="@string/licence_number"
+            android:textStyle="bold"
             android:textColor="@color/light_blue"
             android:textSize="@dimen/_10ssp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -153,7 +153,6 @@
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_8sdp"
             android:background="@drawable/full_border_radius_12"
-            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView41">
@@ -178,42 +177,39 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_16sdp"
-            android:text="@string/select_the_duration_of_the_consultation"
+            android:text="@string/select_specialty"
             android:textColor="@color/light_black"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rl_et_type" />
 
-        <LinearLayout
-            android:id="@+id/ll_duration"
+
+        <RelativeLayout
+            android:id="@+id/rl_et_sp"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_46sdp"
+            android:layout_height="@dimen/_40sdp"
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_8sdp"
             android:background="@drawable/full_border_radius_12"
-            android:orientation="horizontal"
-            android:weightSum="5"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView411">
 
 
-            <EditText
-                android:id="@+id/duration_et"
+            <Spinner
+                android:id="@+id/spe_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@null"
-                android:hint="@string/select_the_duration_of_the_consultation"
+                android:dropDownVerticalOffset="@dimen/_40sdp"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:paddingHorizontal="@dimen/_8sdp"
-                android:textAlignment="viewStart"
-                android:textColor="@color/light_black"
-                android:textDirection="ltr"
-                android:textSize="@dimen/_12ssp" />
+                android:popupBackground="@color/white"
+                android:theme="@style/mySpinnerItemStyle" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
         <TextView
@@ -226,7 +222,7 @@
             android:textColor="@color/light_black"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll_duration" />
+            app:layout_constraintTop_toBottomOf="@+id/rl_et_sp" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_calender"
@@ -277,7 +273,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card_calender" />
+            app:layout_constraintTop_toBottomOf="@+id/rl_et_times" />
 
         <RelativeLayout
             android:id="@+id/rl_et_times"
@@ -315,7 +311,7 @@
             android:textColor="@color/light_black"
             android:textSize="@dimen/_12ssp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rl_et_times" />
+            app:layout_constraintTop_toBottomOf="@+id/textView55" />
 
         <FrameLayout
             android:id="@+id/map_card"

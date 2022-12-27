@@ -2,10 +2,7 @@ package com.tawajood.vet.ui.main.requests
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tawajood.vet.pojo.ClinicsResponse
-import com.tawajood.vet.pojo.PetsResponse
-import com.tawajood.vet.pojo.RequestTypesResponse
-import com.tawajood.vet.pojo.TimesResponse
+import com.tawajood.vet.pojo.*
 import com.tawajood.vet.repository.Repository
 import com.tawajood.vet.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -37,10 +34,29 @@ constructor(
     private val _myPets = MutableStateFlow<Resource<PetsResponse>>(Resource.Idle())
     val myPets = _myPets.asSharedFlow()
 
+    private val _addRequestFlow = MutableStateFlow<Resource<Any>>(Resource.Idle())
+    val addRequestFlow = _addRequestFlow.asSharedFlow()
+
     init {
         getMyPets()
         getRequestTypes()
     }
+
+     fun addRequest(addRequestBody: AddRequestBody, images: ImagesBody) =
+        viewModelScope.launch {
+            try {
+                _addRequestFlow.emit(Resource.Loading())
+                val response = handleResponse(repository.addRequest(addRequestBody, images))
+                if (response.status) {
+                    _addRequestFlow.emit(Resource.Success(response.data!!))
+                } else {
+                    _addRequestFlow.emit(Resource.Error(message = response.msg))
+                }
+            } catch (e: Exception) {
+                _addRequestFlow.emit(Resource.Error(message = e.message!!))
+            }
+        }
+
     private fun getMyPets() = viewModelScope.launch {
         try {
             _myPets.emit(Resource.Loading())
@@ -86,7 +102,7 @@ constructor(
     }
 
 
-   private fun getRequestTypes() = viewModelScope.launch {
+    private fun getRequestTypes() = viewModelScope.launch {
         try {
             _getRequestTypesFlow.emit(Resource.Loading())
             val response = handleResponse(repository.getRequestTypes())
