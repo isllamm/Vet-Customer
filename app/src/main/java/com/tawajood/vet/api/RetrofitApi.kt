@@ -155,6 +155,11 @@ interface RetrofitApi {
         @Header("lang") lang: String,
     ): Response<MainResponse<CategoriesResponse>>
 
+    @GET("get-vendors-by-category-id")
+    suspend fun getVendors(
+        @Header("lang") lang: String,
+        @Query("cat_id") cat_id:String
+    ): Response<MainResponse<VendorsResponse>>
     @FormUrlEncoded
     @POST("pet-by-id")
     suspend fun getPetById(

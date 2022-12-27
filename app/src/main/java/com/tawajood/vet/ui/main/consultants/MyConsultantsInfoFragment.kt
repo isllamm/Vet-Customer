@@ -127,7 +127,7 @@ class MyConsultantsInfoFragment : Fragment(R.layout.fragment_my_consultants_info
 
                         binding.tvNumber.text = "#" + consultant.id.toString()
                         binding.tvDate.text = consultant.created_at.substring(0, 10)
-                        binding.tvTime.text = consultant.time
+                        binding.tvTime.text = consultant.time.from + " to " + consultant.time.to
                         binding.tvType.text = consultant.requestType.name
 
                         Glide.with(requireContext()).load(consultant.clinic.image)

@@ -115,6 +115,9 @@ constructor(private val api: RetrofitApi) {
     suspend fun getCategories() =
         api.getCategories(PrefsHelper.getLanguage())
 
+    suspend fun getVendors(id: String) =
+        api.getVendors(PrefsHelper.getLanguage(), id)
+
     suspend fun getPetById(petId: String) =
         api.getPetById(PrefsHelper.getLanguage(), PrefsHelper.getToken(), petId)
 
