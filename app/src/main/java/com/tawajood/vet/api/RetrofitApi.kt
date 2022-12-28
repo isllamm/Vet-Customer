@@ -158,8 +158,31 @@ interface RetrofitApi {
     @GET("get-vendors-by-category-id")
     suspend fun getVendors(
         @Header("lang") lang: String,
-        @Query("cat_id") cat_id:String
+        @Query("cat_id") cat_id: String
     ): Response<MainResponse<VendorsResponse>>
+
+    @GET("get-subcategories-by-vendor-id")
+    suspend fun getSubcategories(
+        @Header("lang") lang: String,
+        @Query("vendor_id") vendor_id: String
+    ): Response<MainResponse<SubcategoriesResponse>>
+
+
+    @GET("get-products-by-subcategory-id")
+    suspend fun getProducts(
+        @Header("lang") lang: String,
+        @Query("subcategory_id") subcategory_id: String
+    ): Response<MainResponse<ProductsResponse>>
+
+    @FormUrlEncoded
+    @POST("add-cart")
+    suspend fun addToCart(
+        @Header("lang") lang: String,
+        @Field("user_id") user_id: String,
+        @Field("product_id") product_id: String,
+        @Field("quantity") quantity: String,
+    ): Response<MainResponse<Any>>
+
     @FormUrlEncoded
     @POST("pet-by-id")
     suspend fun getPetById(

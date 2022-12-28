@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.tawajood.vet.R
@@ -44,7 +45,10 @@ class VendorsFragment : Fragment(R.layout.fragment_vendors) {
     private fun setupVendors() {
         vendorsAdapter = VendorsAdapter(object : VendorsAdapter.OnItemClick {
             override fun onItemClickListener(position: Int) {
-
+                parent.navController.navigate(
+                    R.id.productsFragment,
+                    bundleOf(Constants.VENDOR_ID to vendors[position].id)
+                )
             }
 
         })

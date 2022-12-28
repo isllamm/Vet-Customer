@@ -136,4 +136,9 @@
         android:name="com.tawajood.vet.ui.main.pharmacy.VendorsFragment"
         android:label="fragment_vendors"
         tools:layout="@layout/fragment_vendors" />
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.tawajood.vet.ui.main.pharmacy.ProductsFragment"
+        android:label="fragment_products"
+        tools:layout="@layout/fragment_products" />
 </navigation>

@@ -222,5 +222,6 @@
     <string name="loading">loading..</string>
     <string name="error_location_address">Unknown Location</string>
     <string name="select_specialty">Select specialty</string>
+    <string name="products_type">Products Type</string>
 
 </resources>

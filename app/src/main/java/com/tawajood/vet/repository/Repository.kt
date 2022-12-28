@@ -118,6 +118,20 @@ constructor(private val api: RetrofitApi) {
     suspend fun getVendors(id: String) =
         api.getVendors(PrefsHelper.getLanguage(), id)
 
+    suspend fun getSubcategories(id: String) =
+        api.getSubcategories(PrefsHelper.getLanguage(), id)
+
+    suspend fun getProducts(id: String) =
+        api.getProducts(PrefsHelper.getLanguage(), id)
+
+    suspend fun addToCart(product_id: String, quantity: String) =
+        api.addToCart(
+            PrefsHelper.getLanguage(),
+            PrefsHelper.getUserId().toString(),
+            product_id,
+            quantity,
+        )
+
     suspend fun getPetById(petId: String) =
         api.getPetById(PrefsHelper.getLanguage(), PrefsHelper.getToken(), petId)
 
