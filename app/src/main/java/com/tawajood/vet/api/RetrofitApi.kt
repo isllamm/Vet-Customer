@@ -174,6 +174,12 @@ interface RetrofitApi {
         @Query("subcategory_id") subcategory_id: String
     ): Response<MainResponse<ProductsResponse>>
 
+    @GET("get-product-by-id")
+    suspend fun getProductById(
+        @Header("lang") lang: String,
+        @Query("product_id") product_id: String
+    ): Response<MainResponse<ProductResponse>>
+
     @FormUrlEncoded
     @POST("add-cart")
     suspend fun addToCart(

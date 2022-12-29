@@ -3,10 +3,7 @@ package com.tawajood.vet.ui.main.pharmacy
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tawajood.vet.pojo.CategoriesResponse
-import com.tawajood.vet.pojo.ProductsResponse
-import com.tawajood.vet.pojo.SubcategoriesResponse
-import com.tawajood.vet.pojo.VendorsResponse
+import com.tawajood.vet.pojo.*
 import com.tawajood.vet.repository.Repository
 import com.tawajood.vet.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -37,6 +34,9 @@ constructor(
 
     private val _addToCartFlow = MutableStateFlow<Resource<Any>>(Resource.Idle())
     val addToCartFlow = _addToCartFlow.asSharedFlow()
+
+    private val _getProductFlow = MutableStateFlow<Resource<ProductResponse>>(Resource.Idle())
+    val getProductFlow = _getProductFlow.asSharedFlow()
 
 
     fun getCategories() = viewModelScope.launch {
@@ -101,6 +101,23 @@ constructor(
         } catch (e: Exception) {
             Log.d("islam", "getVendors: ${e.message}")
             _getProductsFlow.emit(Resource.Error(message = e.message!!))
+        }
+    }
+
+    fun getProductById(productId: String) = viewModelScope.launch {
+        try {
+            _getProductFlow.emit(Resource.Loading())
+            val response = handleResponse(repository.getProductById(productId))
+            if (response.status) {
+                _getProductFlow.emit(Resource.Success(response.data!!))
+            } else {
+                Log.d("islam", "getVendors: ${response.msg}")
+
+                _getProductFlow.emit(Resource.Error(message = response.msg))
+            }
+        } catch (e: Exception) {
+            Log.d("islam", "getVendors: ${e.message}")
+            _getProductFlow.emit(Resource.Error(message = e.message!!))
         }
     }
 

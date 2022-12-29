@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.tawajood.vet.R
@@ -74,7 +75,10 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
     private fun setupProducts() {
         productsAdapter = ProductsAdapter(object : ProductsAdapter.OnItemClick {
             override fun onItemClickListener(position: Int) {
-
+                parent.navController.navigate(
+                    R.id.productInfoFragment,
+                    bundleOf(Constants.PRODUCT_ID to products[position].id)
+                )
             }
 
             override fun onAddToCartClick(position: Int) {

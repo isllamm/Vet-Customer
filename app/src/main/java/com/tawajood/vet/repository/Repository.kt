@@ -124,6 +124,9 @@ constructor(private val api: RetrofitApi) {
     suspend fun getProducts(id: String) =
         api.getProducts(PrefsHelper.getLanguage(), id)
 
+    suspend fun getProductById(id: String) =
+        api.getProductById(PrefsHelper.getLanguage(), id)
+
     suspend fun addToCart(product_id: String, quantity: String) =
         api.addToCart(
             PrefsHelper.getLanguage(),
