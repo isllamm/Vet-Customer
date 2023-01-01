@@ -127,6 +127,8 @@
     <string name="report_added">report added</string>
     <string name="clinic_details">Clinic Details</string>
     <string name="Rs">RS</string>
+    <string name="cart">Cart</string>
+
     <string name="consult_duration">Consult Duration</string>
     <string name="duration1">m</string>
     <string name="image">image</string>
@@ -223,5 +225,9 @@
     <string name="error_location_address">Unknown Location</string>
     <string name="select_specialty">Select specialty</string>
     <string name="products_type">Products Type</string>
+    <string name="product_details">product details</string>
+    <string name="product_name">Product Name:</string>
+    <string name="order_date">Order Date</string>
+    <string name="quantity">quantity:</string>
 
 </resources>

@@ -184,10 +184,19 @@ interface RetrofitApi {
     @POST("add-cart")
     suspend fun addToCart(
         @Header("lang") lang: String,
+        @Header("token") token: String,
         @Field("user_id") user_id: String,
         @Field("product_id") product_id: String,
         @Field("quantity") quantity: String,
     ): Response<MainResponse<Any>>
+
+    @FormUrlEncoded
+    @POST("cart")
+    suspend fun getCart(
+        @Header("lang") lang: String,
+        @Header("token") token: String,
+        @Field("user_id") user_id: String,
+    ): Response<MainResponse<CartResponse>>
 
     @FormUrlEncoded
     @POST("pet-by-id")

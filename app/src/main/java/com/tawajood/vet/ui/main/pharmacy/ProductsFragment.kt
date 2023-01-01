@@ -159,7 +159,7 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
                     }
                     is Resource.Loading -> parent.showLoading()
                     is Resource.Success -> {
-                        ToastUtils.showToast(requireContext(), it.message.toString())
+                        ToastUtils.showToast(requireContext(), "تمت اضافة المنتج الى سلة المشتريات")
                     }
                 }
             }

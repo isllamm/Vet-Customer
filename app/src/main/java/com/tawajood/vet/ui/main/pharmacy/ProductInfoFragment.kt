@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.tawajood.vet.R
 import com.tawajood.vet.adapters.ProductsAdapter
 import com.tawajood.vet.databinding.FragmentProductInfoBinding
@@ -48,7 +49,9 @@ class ProductInfoFragment : Fragment(R.layout.fragment_product_info) {
     }
 
     private fun onclick() {
-
+        binding.btn.setOnClickListener {
+            viewModel.addToCart(productId.toString(), "1")
+        }
     }
 
     private fun setupUI() {
@@ -71,6 +74,28 @@ class ProductInfoFragment : Fragment(R.layout.fragment_product_info) {
                     is Resource.Success -> {
                         product = it.data!!.product
 
+                        Glide.with(requireContext()).load(product.images[0].image).into(binding.img)
+                        binding.name.text = product.name
+                        binding.details.text = product.desc
+                        binding.price.text = product.price.toString() + getString(R.string.Rs)
+
+                    }
+                }
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.addToCartFlow.collectLatest {
+                parent.hideLoading()
+                when (it) {
+                    is Resource.Error -> {
+                        ToastUtils.showToast(requireContext(), it.message.toString())
+                    }
+                    is Resource.Idle -> {
+
+                    }
+                    is Resource.Loading -> parent.showLoading()
+                    is Resource.Success -> {
+                        ToastUtils.showToast(requireContext(), "تمت اضافة المنتج الى سلة المشتريات")
                     }
                 }
             }

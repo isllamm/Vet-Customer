@@ -126,6 +126,7 @@
     <string name="report_added">تم اضافة النقرير</string>
     <string name="clinic_details">تفاصيل العيادة</string>
     <string name="Rs">ر.س</string>
+    <string name="cart">السلة</string>
     <string name="consult_duration">مدة الاستشارة</string>
     <string name="duration1">دقيقة</string>
     <string name="image">صورة</string>
@@ -220,5 +221,9 @@
     <string name="error_location_address">غير قادر على جلب الموقع</string>
     <string name="select_specialty">حدد التخصص</string>
     <string name="products_type">نوع المنتج</string>
+    <string name="product_details">تفاصيل المنتج</string>
+    <string name="product_name">اسم المنتج:</string>
+    <string name="order_date">تاريخ الطلب:</string>
+    <string name="quantity">الكمية:</string>
 
 </resources>

@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.toolbar.cart.setOnClickListener {
-
+            navController.navigate(R.id.cartFragment)
         }
     }
 

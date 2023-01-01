@@ -64,8 +64,9 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                     binding.emailEt.text.toString(),
                     "\$@#%12345AaBb\$@#%"
                 )
+                viewModel.register(registerBody)
             }
-            viewModel.register(registerBody)
+
 
             /*viewModel.checkPhone(
                 "+" + binding.ccp.selectedCountryCode.toString(),

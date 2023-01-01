@@ -130,9 +130,17 @@ constructor(private val api: RetrofitApi) {
     suspend fun addToCart(product_id: String, quantity: String) =
         api.addToCart(
             PrefsHelper.getLanguage(),
+            PrefsHelper.getToken(),
             PrefsHelper.getUserId().toString(),
             product_id,
             quantity,
+        )
+
+    suspend fun getCart() =
+        api.getCart(
+            PrefsHelper.getLanguage(),
+            PrefsHelper.getToken(),
+            PrefsHelper.getUserId().toString(),
         )
 
     suspend fun getPetById(petId: String) =

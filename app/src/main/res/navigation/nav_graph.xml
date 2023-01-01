@@ -146,4 +146,14 @@
         android:name="com.tawajood.vet.ui.main.pharmacy.ProductInfoFragment"
         android:label="fragment_product_info"
         tools:layout="@layout/fragment_product_info" />
+    <fragment
+        android:id="@+id/previousOrdersFragment"
+        android:name="com.tawajood.vet.ui.main.orders.PreviousOrdersFragment"
+        android:label="fragment_previous_orders"
+        tools:layout="@layout/fragment_previous_orders" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.tawajood.vet.ui.main.cart.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
 </navigation>
