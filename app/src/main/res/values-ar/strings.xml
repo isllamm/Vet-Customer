@@ -225,5 +225,10 @@
     <string name="product_name">اسم المنتج:</string>
     <string name="order_date">تاريخ الطلب:</string>
     <string name="quantity">الكمية:</string>
+    <string name="total_price">المجموع</string>
+    <string name="shipping_charges">تكلفة الشحن</string>
+    <string name="tax">القيمة المضافة</string>
+    <string name="total">الإجمالي</string>
+    <string name="check_out">إتمام الطلب</string>
 
 </resources>

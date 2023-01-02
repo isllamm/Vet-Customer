@@ -229,5 +229,10 @@
     <string name="product_name">Product Name:</string>
     <string name="order_date">Order Date</string>
     <string name="quantity">quantity:</string>
+    <string name="total_price">Total Price</string>
+    <string name="shipping_charges">Shipping charges</string>
+    <string name="tax">Tax</string>
+    <string name="total">Total</string>
+    <string name="check_out">Check Out</string>
 
 </resources>
