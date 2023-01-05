@@ -230,5 +230,8 @@
     <string name="tax">القيمة المضافة</string>
     <string name="total">الإجمالي</string>
     <string name="check_out">إتمام الطلب</string>
+    <string name="medicine_name">اسم الدواء:</string>
+    <string name="order_status">حالة الطلب:</string>
+    <string name="quantity1">الكمية المطلوبة:</string>
 
 </resources>

@@ -143,6 +143,31 @@ constructor(private val api: RetrofitApi) {
             PrefsHelper.getUserId().toString(),
         )
 
+    suspend fun deleteItemCart(cartId: String) =
+        api.deleteItemCart(
+            PrefsHelper.getLanguage(),
+            PrefsHelper.getToken(),
+            cartId,
+            "1"
+        )
+
+    suspend fun getMyOrders() =
+        api.getMyOrders(
+            PrefsHelper.getLanguage(),
+            PrefsHelper.getToken(),
+            PrefsHelper.getUserId().toString(),
+        )
+
+    suspend fun addOrder() =
+        api.addOrder(
+            PrefsHelper.getLanguage(),
+            PrefsHelper.getToken(),
+            PrefsHelper.getUserId().toString(),
+            PrefsHelper.getPhone(),
+            PrefsHelper.getCountryCode(),
+            "", "", "", "", "0"
+        )
+
     suspend fun getPetById(petId: String) =
         api.getPetById(PrefsHelper.getLanguage(), PrefsHelper.getToken(), petId)
 

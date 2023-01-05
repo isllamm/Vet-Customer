@@ -234,5 +234,8 @@
     <string name="tax">Tax</string>
     <string name="total">Total</string>
     <string name="check_out">Check Out</string>
+    <string name="medicine_name">medicine name:</string>
+    <string name="quantity1">Quantity:</string>
+    <string name="order_status">Order Status:</string>
 
 </resources>

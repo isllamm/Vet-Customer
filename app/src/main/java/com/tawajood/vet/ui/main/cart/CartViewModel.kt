@@ -24,6 +24,10 @@ constructor(
         MutableStateFlow<Resource<CartResponse>>(Resource.Idle())
     val getCartFlow = _getCartFlow.asSharedFlow()
 
+    private val _deleteItemFlow =
+        MutableStateFlow<Resource<Any>>(Resource.Idle())
+    val deleteItemFlow = _deleteItemFlow.asSharedFlow()
+
     init {
         getCart()
     }
@@ -42,5 +46,18 @@ constructor(
         }
     }
 
+     fun deleteItemCart(cartId: String) = viewModelScope.launch {
+        try {
+            _deleteItemFlow.emit(Resource.Loading())
+            val response = handleResponse(repository.deleteItemCart(cartId))
+            if (response.status) {
+                _deleteItemFlow.emit(Resource.Success(response.data!!))
+            } else {
+                _deleteItemFlow.emit(Resource.Error(message = response.msg))
+            }
+        } catch (e: Exception) {
+            _deleteItemFlow.emit(Resource.Error(message = e.message!!))
+        }
+    }
 
 }

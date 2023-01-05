@@ -43,7 +43,7 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
     private fun setupCart() {
         cartAdapter = CartAdapter(object : CartAdapter.OnItemClick {
             override fun onDeleteClicked(position: Int) {
-
+                viewModel.deleteItemCart(carts[position].id.toString())
             }
 
         })
@@ -80,6 +80,25 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
                         binding.tax.text = prices.tax + getString(R.string.Rs)
                         binding.shipping.text = prices.delivery_cost + getString(R.string.Rs)
                         binding.total.text = prices.finalTotal + getString(R.string.Rs)
+                    }
+                }
+            }
+        }
+
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.deleteItemFlow.collectLatest {
+                parent.hideLoading()
+                when (it) {
+                    is Resource.Error -> {
+                        ToastUtils.showToast(requireContext(), it.message.toString())
+                    }
+                    is Resource.Idle -> {
+
+                    }
+                    is Resource.Loading -> parent.showLoading()
+                    is Resource.Success -> {
+
                     }
                 }
             }
