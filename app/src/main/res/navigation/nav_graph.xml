@@ -156,4 +156,9 @@
         android:name="com.tawajood.vet.ui.main.cart.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/reviewDoctorFragment"
+        android:name="com.tawajood.vet.ui.main.review.ReviewDoctorFragment"
+        android:label="fragment_review_doctor"
+        tools:layout="@layout/fragment_review_doctor" />
 </navigation>

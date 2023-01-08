@@ -233,5 +233,7 @@
     <string name="medicine_name">اسم الدواء:</string>
     <string name="order_status">حالة الطلب:</string>
     <string name="quantity1">الكمية المطلوبة:</string>
+    <string name="rate">التقييم</string>
+    <string name="comment">اكتب تعليق</string>
 
 </resources>

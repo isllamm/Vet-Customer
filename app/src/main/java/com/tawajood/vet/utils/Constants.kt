@@ -40,6 +40,6 @@ object Constants {
     const val OPEN_NOTIFICATION = "open_not"
     const val RECEIVER_ID = "receiver_id"
     const val ORDER_ID = "o"
-
+    const val DOCTOR_ID="sdadsa"
 
 }

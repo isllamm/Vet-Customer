@@ -231,6 +231,17 @@ interface RetrofitApi {
     ): Response<MainResponse<Any>>
 
     @FormUrlEncoded
+    @POST("rate-clinic")
+    suspend fun reviewDoctor(
+        @Header("lang") lang: String,
+        @Header("token") token: String,
+        @Field("user_id") user_id: String,
+        @Field("clinic_id") clinic_id: String,
+        @Field("rate") rate: String,
+        @Field("comment") comment: String,
+    ): Response<MainResponse<Any>>
+
+    @FormUrlEncoded
     @POST("pet-by-id")
     suspend fun getPetById(
         @Header("lang") lang: String,

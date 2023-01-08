@@ -168,6 +168,16 @@ constructor(private val api: RetrofitApi) {
             "", "", "", "", "0"
         )
 
+    suspend fun reviewDoctor(clinic_id: String, rate: String, comment: String) =
+        api.reviewDoctor(
+            PrefsHelper.getLanguage(),
+            PrefsHelper.getToken(),
+            PrefsHelper.getUserId().toString(),
+            clinic_id,
+            rate,
+            comment
+        )
+
     suspend fun getPetById(petId: String) =
         api.getPetById(PrefsHelper.getLanguage(), PrefsHelper.getToken(), petId)
 
