@@ -26,5 +26,5 @@ data class Consultant(
     val medicines: MutableList<Medicine>?,
     val requestType: RequestType,
     val parts_body: MutableList<BodyPart>?,
-
-    )
+    val consultation_fees: Int?,
+)

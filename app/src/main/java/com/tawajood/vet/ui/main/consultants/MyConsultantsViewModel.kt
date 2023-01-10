@@ -28,6 +28,10 @@ constructor(
         MutableStateFlow<Resource<ConsultantInfoResponse>>(Resource.Idle())
     val getRequestByIdFlow = _getRequestByIdFlow.asSharedFlow()
 
+    private val _payFeesFlow =
+        MutableStateFlow<Resource<Any>>(Resource.Idle())
+    val payFeesFlow = _payFeesFlow.asSharedFlow()
+
     init {
         getMyRequests()
     }
@@ -58,6 +62,20 @@ constructor(
             }
         } catch (e: Exception) {
             _getRequestByIdFlow.emit(Resource.Error(message = e.message!!))
+        }
+    }
+
+    fun payFees(requestId: String, clinic_id: String) = viewModelScope.launch {
+        try {
+            _payFeesFlow.emit(Resource.Loading())
+            val response = handleResponse(repository.payFees(requestId, clinic_id))
+            if (response.status) {
+                _payFeesFlow.emit(Resource.Success(response.data!!))
+            } else {
+                _payFeesFlow.emit(Resource.Error(message = response.msg))
+            }
+        } catch (e: Exception) {
+            _payFeesFlow.emit(Resource.Error(message = e.message!!))
         }
     }
 }

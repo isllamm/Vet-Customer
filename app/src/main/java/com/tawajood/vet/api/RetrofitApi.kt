@@ -116,6 +116,16 @@ interface RetrofitApi {
     ): Response<MainResponse<ConsultantInfoResponse>>
 
     @FormUrlEncoded
+    @POST("pay-fees")
+    suspend fun payFees(
+        @Header("lang") lang: String,
+        @Header("token") token: String,
+        @Field("request_id") request_id: String,
+        @Field("user_id") user_id: String,
+        @Field("clinic_id") clinic_id: String,
+    ): Response<MainResponse<Any>>
+
+    @FormUrlEncoded
     @POST("my-pets")
     suspend fun getMyPets(
         @Header("lang") lang: String,

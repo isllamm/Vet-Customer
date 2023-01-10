@@ -56,7 +56,9 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
     }
 
     private fun onClick() {
-
+        binding.btnCheckOut.setOnClickListener {
+            parent.navController.navigate(R.id.confirmOrderFragment)
+        }
     }
 
     private fun observeData() {

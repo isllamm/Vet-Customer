@@ -127,10 +127,10 @@
         android:label="fragment_add_request"
         tools:layout="@layout/fragment_add_request" />
     <fragment
-        android:id="@+id/feePaymentFragment"
-        android:name="com.tawajood.vet.ui.main.payment.FeePaymentFragment"
+        android:id="@+id/confirmOrderFragment"
+        android:name="com.tawajood.vet.ui.main.payment.ConfirmOrderFragment"
         android:label="fragment_fee_payment"
-        tools:layout="@layout/fragment_fee_payment" />
+        tools:layout="@layout/fragment_confirm_order" />
     <fragment
         android:id="@+id/vendorsFragment"
         android:name="com.tawajood.vet.ui.main.pharmacy.VendorsFragment"
@@ -161,4 +161,9 @@
         android:name="com.tawajood.vet.ui.main.review.ReviewDoctorFragment"
         android:label="fragment_review_doctor"
         tools:layout="@layout/fragment_review_doctor" />
+    <fragment
+        android:id="@+id/successfulOrderFragment"
+        android:name="com.tawajood.vet.ui.main.payment.SuccessfulOrderFragment"
+        android:label="fragment_successful_order"
+        tools:layout="@layout/fragment_successful_order" />
 </navigation>

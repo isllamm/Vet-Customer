@@ -111,7 +111,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
             binding.avilFrame.background =
                 requireContext().getDrawable(R.drawable.full_border_radius_12_grey)
-            binding.tvAvil.setTextColor(Color.parseColor("#9BDAE3"))
+            binding.tvAvil.setTextColor(Color.parseColor("#2D4B50"))
 
 
 
@@ -127,7 +127,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
             binding.mostFrame.background =
                 requireContext().getDrawable(R.drawable.full_border_radius_12_grey)
-            binding.tvMost.setTextColor(Color.parseColor("#9BDAE3"))
+            binding.tvMost.setTextColor(Color.parseColor("#2D4B50"))
 
 
             binding.rvMostRatedDoctors.isVisible = false

@@ -77,6 +77,15 @@ constructor(private val api: RetrofitApi) {
             requestId,
         )
 
+    suspend fun payFees(requestId: String, clinic_id: String) =
+        api.payFees(
+            PrefsHelper.getLanguage(),
+            PrefsHelper.getToken(),
+            requestId,
+            PrefsHelper.getUserId().toString(),
+            clinic_id,
+        )
+
     suspend fun getMyPets() =
         api.getMyPets(
             PrefsHelper.getLanguage(),
@@ -158,14 +167,22 @@ constructor(private val api: RetrofitApi) {
             PrefsHelper.getUserId().toString(),
         )
 
-    suspend fun addOrder() =
+    suspend fun addOrder(
+        user_phone: String,
+        country_code: String,
+        address: String,
+        lat: String,
+        lng: String,
+        name: String,
+        payment_method: String
+    ) =
         api.addOrder(
             PrefsHelper.getLanguage(),
             PrefsHelper.getToken(),
             PrefsHelper.getUserId().toString(),
-            PrefsHelper.getPhone(),
-            PrefsHelper.getCountryCode(),
-            "", "", "", "", "0"
+            user_phone,
+            country_code,
+            address, lat, lng, name, payment_method
         )
 
     suspend fun reviewDoctor(clinic_id: String, rate: String, comment: String) =

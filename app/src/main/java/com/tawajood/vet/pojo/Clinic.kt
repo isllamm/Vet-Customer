@@ -9,6 +9,7 @@ data class Clinic(
     val consultation_fees: Int,
     val consultation_duration: String,
     val details: String,
+    val image_clinic:String,
     val phone: String,
     val country_code: String,
     val email: String,

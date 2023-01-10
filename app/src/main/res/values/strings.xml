@@ -35,6 +35,7 @@
     <string name="profile">Profile</string>
     <string name="technical_support">Technical support</string>
     <string name="Fee_Payment">Fee Payment</string>
+    <string name="confirem_order">confirm order</string>
 
     <string name="terms_and_conditions">Terms and conditions</string>
     <string name="about_us">About Us</string>
@@ -239,5 +240,14 @@
     <string name="order_status">Order Status:</string>
     <string name="rate">Rate</string>
     <string name="comment">Comment</string>
-
+    <string name="delivery_data">delivery data</string>
+    <string name="payment_method">payment method</string>
+    <string name="products">products</string>
+    <string name="receipt">receipt</string>
+    <string name="fees_have_been_paid_successfully">Fees have been paid successfully</string>
+    <string name="your_order_has_been_confirmed_successfully">Your Order has been confirmed successfully</string>
+    <string-array name="Methods">
+        <item>Pay in cash</item>
+        <item>Credit card</item>
+    </string-array>
 </resources>

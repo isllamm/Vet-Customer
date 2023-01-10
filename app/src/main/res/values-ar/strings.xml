@@ -26,7 +26,7 @@
     <string name="address_required">العنوان مطلوب</string>
     <string name="license_required">رقم الرخصة المهنية مطلوب</string>
     <string name="location">الموقع</string>
-    <string name="confirm">تأكديد</string>
+    <string name="confirm">تأكيد</string>
     <string name="new_password">كلمة مرور جديده</string>
     <string name="confirm_new_password">نأكيد كلمة المرور الجديده</string>
     <string name="forgot_password"><u>نسيت كلمة المرور؟</u></string>
@@ -35,6 +35,8 @@
     <string name="profile">الملف الشخصي</string>
     <string name="technical_support">الدعم الفني</string>
     <string name="Fee_Payment">سداد الرسوم</string>
+    <string name="confirem_order">تأكيد الطلب</string>
+
     <string name="terms_and_conditions">الشروط والأحكام</string>
     <string name="about_us">من نحن</string>
     <string name="notifications">التنبيهات</string>
@@ -235,5 +237,14 @@
     <string name="quantity1">الكمية المطلوبة:</string>
     <string name="rate">التقييم</string>
     <string name="comment">اكتب تعليق</string>
-
+    <string name="delivery_data">بيانات التوصيل</string>
+    <string name="products">المنتجات</string>
+    <string name="receipt">الفاتورة</string>
+    <string name="payment_method">طريقة الدفع</string>
+    <string name="fees_have_been_paid_successfully">تم دفع الرسوم بنجاح</string>
+    <string name="your_order_has_been_confirmed_successfully">تم تأكيد طلبك بنجاح</string>
+    <string-array name="Methods">
+        <item>دفع نقدا</item>
+        <item>بطاقة الائتمان</item>
+    </string-array>
 </resources>
