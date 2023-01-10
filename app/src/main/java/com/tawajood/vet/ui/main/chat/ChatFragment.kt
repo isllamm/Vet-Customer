@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -47,6 +48,13 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
     }
 
     private fun onClick() {
+        parent.onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                parent.navController.popBackStack(R.id.myConsultantsFragment, false)
+            }
+
+        })
+
         binding.refresher.setOnRefreshListener {
             viewModel.getChat(requestId, PrefsHelper.getUserId().toString())
         }

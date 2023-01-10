@@ -126,6 +126,14 @@ interface RetrofitApi {
     ): Response<MainResponse<Any>>
 
     @FormUrlEncoded
+    @POST("cancel-request")
+    suspend fun cancelRequest(
+        @Header("lang") lang: String,
+        @Header("token") token: String,
+        @Field("request_id") request_id: String,
+    ): Response<MainResponse<Any>>
+
+    @FormUrlEncoded
     @POST("my-pets")
     suspend fun getMyPets(
         @Header("lang") lang: String,

@@ -1,5 +1,6 @@
 package com.tawajood.vet.ui.main.consultants
 
+import ToastUtils
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -88,6 +89,15 @@ class MyConsultantsInfoFragment : Fragment(R.layout.fragment_my_consultants_info
         binding.btnPay.setOnClickListener {
             checkOut()
         }
+        binding.btnCancel.setOnClickListener {
+            viewModel.cancelRequest(consultant.id.toString())
+        }
+        binding.btnChat.setOnClickListener {
+            parent.navController.navigate(
+                R.id.chatFragment,
+                bundleOf(Constants.CONSULTANT_ID to consultant.id.toString())
+            )
+        }
     }
 
     private fun isPending(isTrue: Boolean) {
@@ -166,6 +176,27 @@ class MyConsultantsInfoFragment : Fragment(R.layout.fragment_my_consultants_info
                         parent.navController.navigate(
                             R.id.successfulOrderFragment,
                             bundleOf(Constants.TYPE to 2)
+                        )
+                    }
+                }
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.cancelRequestFlow.collectLatest {
+                parent.hideLoading()
+                when (it) {
+                    is Resource.Error -> {
+                        ToastUtils.showToast(requireContext(), it.message.toString())
+                    }
+                    is Resource.Idle -> {
+
+                    }
+                    is Resource.Loading -> parent.showLoading()
+                    is Resource.Success -> {
+                        ToastUtils.showToast(requireContext(), "تم حذف الطلب بنجاح")
+                        parent.navController.popBackStack(
+                            R.id.myConsultantsFragment,
+                            false
                         )
                     }
                 }

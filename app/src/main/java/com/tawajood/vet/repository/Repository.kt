@@ -86,6 +86,13 @@ constructor(private val api: RetrofitApi) {
             clinic_id,
         )
 
+    suspend fun cancelRequest(requestId: String) =
+        api.cancelRequest(
+            PrefsHelper.getLanguage(),
+            PrefsHelper.getToken(),
+            requestId,
+        )
+
     suspend fun getMyPets() =
         api.getMyPets(
             PrefsHelper.getLanguage(),
