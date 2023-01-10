@@ -290,4 +290,24 @@ interface RetrofitApi {
         @PartMap requestBody: Map<String, RequestBody>,
         @Part images: Array<MultipartBody.Part>
     ): Response<MainResponse<Any>>
+
+    @FormUrlEncoded
+    @POST("chats/send-message")
+    suspend fun sendMessage(
+        @Header("lang") lang: String,
+        @Header("token") token: String,
+        @Field("request_id") request_id: String,
+        @Field("user_id") user_id: String,
+        @Field("message") message: String,
+        @Field("message_type") message_type: String
+    ): Response<MainResponse<Any>>
+
+    @FormUrlEncoded
+    @POST("chats/get-chat")
+    suspend fun getChat(
+        @Header("lang") lang: String,
+        @Header("token") token: String,
+        @Field("user_id") user_id: String,
+        @Field("request_id") request_id: String
+    ): Response<MainResponse<ChatResponse>>
 }

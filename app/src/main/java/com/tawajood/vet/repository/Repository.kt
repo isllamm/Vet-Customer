@@ -222,4 +222,27 @@ constructor(private val api: RetrofitApi) {
             imagesParts.toTypedArray()
         )
     }
+
+    suspend fun getChat(request_id: String, user_id: String) =
+        api.getChat(
+            PrefsHelper.getLanguage(),
+            PrefsHelper.getToken(),
+            user_id,
+            request_id
+        )
+
+    suspend fun sendMessage(
+        request_id: String,
+        user_id: String,
+        message: String,
+        message_type: String
+    ) =
+        api.sendMessage(
+            PrefsHelper.getLanguage(),
+            PrefsHelper.getToken(),
+            request_id,
+            user_id,
+            message,
+            message_type
+        )
 }
