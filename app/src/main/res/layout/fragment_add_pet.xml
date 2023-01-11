@@ -327,6 +327,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ll_petAge" />
 
+        <ImageView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:src="@drawable/date_1ckkxlx3k4uc"
+            app:layout_constraintBottom_toTopOf="@+id/ll_petBirthDay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_petAge"
+            app:tint="@color/light_blue" />
         <LinearLayout
             android:id="@+id/ll_petBirthDay"
             android:layout_width="match_parent"

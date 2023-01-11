@@ -64,7 +64,7 @@ class AddPetFragment : Fragment(R.layout.fragment_add_pet) {
     }
 
     private fun onClick() {
-        binding.monthEt.setOnClickListener {
+        binding.date.setOnClickListener {
             val c = Calendar.getInstance()
             val year = c.get(Calendar.YEAR)
             val month = c.get(Calendar.MONTH)
@@ -78,10 +78,10 @@ class AddPetFragment : Fragment(R.layout.fragment_add_pet) {
 
                     // Display Selected date
                     binding.yearEt.setText(year.toString())
-                    binding.monthEt.setText(monthOfYear.toString())
+                    binding.monthEt.setText("${monthOfYear + 1}")
                     binding.dayEt.setText(dayOfMonth.toString())
 
-                    date = "$year-$monthOfYear-$dayOfMonth"
+                    date = "$year-${monthOfYear + 1}-$dayOfMonth"
                 },
                 year,
                 month,

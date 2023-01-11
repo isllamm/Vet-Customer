@@ -171,4 +171,9 @@
         android:name="com.tawajood.vet.ui.main.chat.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/doctorReviewsFragment"
+        android:name="com.tawajood.vet.ui.main.doctor_profile.DoctorReviewsFragment"
+        android:label="fragment_doctor_reviews"
+        tools:layout="@layout/fragment_doctor_reviews" />
 </navigation>

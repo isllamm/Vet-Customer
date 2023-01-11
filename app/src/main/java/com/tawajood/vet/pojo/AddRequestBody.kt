@@ -9,8 +9,8 @@ data class AddRequestBody(
     val details: String,
     val clinic_day_id: Int,
     val clinic_time_id: Int,
-    val address: String,
-    val lat: Double,
-    val lng: Double,
+    val address: String?,
+    val lat: Double?,
+    val lng: Double?,
     val date: String,
 )

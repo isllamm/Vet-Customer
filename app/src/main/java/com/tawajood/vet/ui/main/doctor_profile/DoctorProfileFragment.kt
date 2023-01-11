@@ -55,6 +55,12 @@ class DoctorProfileFragment : Fragment(R.layout.fragment_doctor_profile) {
     }
 
     private fun onClick() {
+        binding.tv2.setOnClickListener {
+            parent.navController.navigate(
+                R.id.doctorReviewsFragment,
+                bundleOf(Constants.CLINIC to id)
+            )
+        }
         binding.btn.setOnClickListener {
             parent.navController.navigate(
                 R.id.addRequestFragment, bundleOf(
@@ -101,12 +107,7 @@ class DoctorProfileFragment : Fragment(R.layout.fragment_doctor_profile) {
                                 binding.comment1.name.text = recommendations[0].user.name
                                 Glide.with(requireContext()).load(recommendations[0].user.image)
                                     .into(binding.comment1.img)
-                                ///2
-                                binding.comment2.commentt.text = recommendations[1].comment
-                                binding.comment2.tvRate.text = recommendations[1].rate.toString()
-                                binding.comment2.name.text = recommendations[1].user.name
-                                Glide.with(requireContext()).load(recommendations[1].user.image)
-                                    .into(binding.comment2.img)
+
 
                             } else {
                                 binding.llComments.isVisible = false

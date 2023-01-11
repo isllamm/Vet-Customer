@@ -194,9 +194,6 @@
                 android:id="@+id/comment1"
                 layout="@layout/item_comment" />
 
-            <include
-                android:id="@+id/comment2"
-                layout="@layout/item_comment" />
         </LinearLayout>
 
 

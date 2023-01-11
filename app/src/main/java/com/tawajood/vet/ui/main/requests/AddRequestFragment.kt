@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.CalendarView
 import android.widget.Toast
@@ -168,8 +169,8 @@ class AddRequestFragment : Fragment(R.layout.fragment_add_request) {
                         times[binding.timesSpinner.selectedItemPosition].clinic_day_id,
                         times[binding.timesSpinner.selectedItemPosition].id,
                         binding.tvAddress.text.toString(),
-                        lat!!,
-                        lng!!,
+                        lat,
+                        lng,
                         date
                     ),
                     ImagesBody(imagesFiles)
@@ -178,6 +179,33 @@ class AddRequestFragment : Fragment(R.layout.fragment_add_request) {
 
         }
 
+        binding.typeSpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    when (types[position]) {
+
+                        types[0] -> {
+                            binding.textView6.visibility = View.VISIBLE
+                            binding.mapCard.visibility = View.VISIBLE
+
+                        }
+                        types[1] -> {
+
+                            binding.textView6.visibility = View.GONE
+                            binding.mapCard.visibility = View.GONE
+                        }
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+            }
         binding.cardAdd.setOnClickListener {
             parent.navController.navigate(R.id.addPetFragment)
         }
