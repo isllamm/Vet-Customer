@@ -39,7 +39,13 @@ class PharmacyFragment : Fragment(R.layout.fragment_pharmacy) {
         setupUI()
         observeData()
         setupCategories()
+        onClick()
+    }
 
+    private fun onClick() {
+        binding.btnPrevOrders.setOnClickListener {
+            parent.navController.navigate(R.id.previousOrdersFragment)
+        }
     }
 
     private fun setupCategories() {

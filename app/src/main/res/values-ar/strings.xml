@@ -244,6 +244,8 @@
     <string name="payment_method">طريقة الدفع</string>
     <string name="fees_have_been_paid_successfully">تم دفع الرسوم بنجاح</string>
     <string name="your_order_has_been_confirmed_successfully">تم تأكيد طلبك بنجاح</string>
+    <string name="fab">fab</string>
+    <string name="instant_consultation">استشارة فورية</string>
     <string-array name="Methods">
         <item>دفع نقدا</item>
         <item>بطاقة الائتمان</item>

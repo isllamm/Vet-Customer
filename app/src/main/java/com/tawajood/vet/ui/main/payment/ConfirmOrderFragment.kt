@@ -1,5 +1,6 @@
 package com.tawajood.vet.ui.main.payment
 
+import PrefsHelper
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
@@ -28,6 +29,7 @@ import com.myfatoorah.sdk.views.MFSDK
 import com.tawajood.vet.R
 import com.tawajood.vet.adapters.ConfirmOrderAdapter
 import com.tawajood.vet.databinding.FragmentConfirmOrderBinding
+import com.tawajood.vet.pojo.AddOrderBody
 import com.tawajood.vet.pojo.Cart
 import com.tawajood.vet.ui.main.MainActivity
 import com.tawajood.vet.ui.main.cart.CartViewModel
@@ -70,10 +72,12 @@ class ConfirmOrderFragment : Fragment(R.layout.fragment_confirm_order) {
         observeData()
         setupRec()
     }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        methods  = resources.getStringArray(R.array.Methods)
+        methods = resources.getStringArray(R.array.Methods)
     }
+
     private fun setupRec() {
         confirmOrderAdapter = ConfirmOrderAdapter()
         binding.rvCheckoutProducts.adapter = confirmOrderAdapter
@@ -111,13 +115,16 @@ class ConfirmOrderFragment : Fragment(R.layout.fragment_confirm_order) {
     private fun addOrder() {
 
         viewModel.addOrder(
-            binding.usernameEt.text.toString(),
-            binding.phoneEt.text.toString(),
-            binding.ccp.selectedCountryCode.toString(),
-            binding.addressEt.text.toString(),
-            payment,
-            lat!!.toString(),
-            lng!!.toString()
+            AddOrderBody(
+                PrefsHelper.getUserId().toString(),
+                binding.phoneEt.text.toString(),
+                binding.ccp.selectedCountryCode.toString(),
+                binding.addressEt.text.toString(),
+                lat!!.toString(),
+                lng!!.toString(),
+                binding.usernameEt.text.toString(),
+                payment,
+            )
 
         )
 

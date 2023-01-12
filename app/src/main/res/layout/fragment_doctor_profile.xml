@@ -204,7 +204,7 @@
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginEnd="@dimen/_12sdp"
             android:layout_marginBottom="@dimen/_12sdp"
-            android:backgroundTint="@color/light_blue"
+            android:backgroundTint="#B4E59D"
             android:text="@string/request_consultation"
             android:textAllCaps="false"
             android:textColor="@color/white"
@@ -212,6 +212,25 @@
             android:textStyle="bold"
             app:cornerRadius="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_instant"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_46sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:backgroundTint="@color/light_blue"
+            android:text="@string/instant_consultation"
+            android:textAllCaps="false"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:cornerRadius="@dimen/_10sdp"
+            app:layout_constraintBottom_toTopOf="@+id/btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

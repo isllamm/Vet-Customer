@@ -13,6 +13,7 @@ import com.tawajood.vet.R
 import com.tawajood.vet.adapters.DoctorsAdapter
 import com.tawajood.vet.databinding.FragmentHomeBinding
 import com.tawajood.vet.databinding.FragmentSpecialtiesResultsBinding
+import com.tawajood.vet.pojo.Clinic
 import com.tawajood.vet.ui.main.MainActivity
 import com.tawajood.vet.ui.main.home.HomeViewModel
 import com.tawajood.vet.utils.Constants
@@ -29,6 +30,7 @@ class SpecialtiesResultsFragment : Fragment(R.layout.fragment_specialties_result
     private lateinit var doctorsAdapter: DoctorsAdapter
     private var title = ""
     private var specialtiesId = -1
+    private var doctors = mutableListOf<Clinic>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,7 +49,11 @@ class SpecialtiesResultsFragment : Fragment(R.layout.fragment_specialties_result
     private fun setupDoctors() {
         doctorsAdapter = DoctorsAdapter(object : DoctorsAdapter.OnItemClick {
             override fun onItemClickListener(position: Int) {
-
+                parent.navController.navigate(
+                    R.id.doctorProfileFragment, bundleOf(
+                        Constants.CLINIC to doctors[position].id
+                    )
+                )
             }
 
         })
@@ -84,7 +90,8 @@ class SpecialtiesResultsFragment : Fragment(R.layout.fragment_specialties_result
                     }
                     is Resource.Loading -> parent.showLoading()
                     is Resource.Success -> {
-                        doctorsAdapter.doctors = it.data!!.clinics
+                        doctors = it.data!!.clinics
+                        doctorsAdapter.doctors = doctors
 
                     }
                 }

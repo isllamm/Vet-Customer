@@ -231,21 +231,14 @@ interface RetrofitApi {
         @Header("lang") lang: String,
         @Header("token") token: String,
         @Field("user_id") user_id: String,
-    ): Response<MainResponse<Any>>
+    ): Response<MainResponse<PreviousOrdersResponse>>
 
-    @FormUrlEncoded
+
     @POST("add-order")
     suspend fun addOrder(
         @Header("lang") lang: String,
         @Header("token") token: String,
-        @Field("user_id") user_id: String,
-        @Field("user_phone") user_phone: String,
-        @Field("country_code") country_code: String,
-        @Field("address") address: String,
-        @Field("lat") lat: String,
-        @Field("lng") lng: String,
-        @Field("name") name: String,
-        @Field("payment_method") payment_method: String,
+        @Body addOrderBody: AddOrderBody,
     ): Response<MainResponse<Any>>
 
     @FormUrlEncoded

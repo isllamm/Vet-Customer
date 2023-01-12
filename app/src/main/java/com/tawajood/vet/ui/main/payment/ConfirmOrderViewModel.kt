@@ -2,6 +2,7 @@ package com.tawajood.vet.ui.main.payment
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.tawajood.vet.pojo.AddOrderBody
 import com.tawajood.vet.pojo.CartResponse
 import com.tawajood.vet.repository.Repository
 import com.tawajood.vet.utils.Resource
@@ -46,25 +47,13 @@ constructor(
     }
 
     fun addOrder(
-        user_phone: String,
-        country_code: String,
-        address: String,
-        lat: String,
-        lng: String,
-        name: String,
-        payment_method: String
+        addOrderBody: AddOrderBody
     ) = viewModelScope.launch {
         try {
             _addOrderFlow.emit(Resource.Loading())
             val response = handleResponse(
                 repository.addOrder(
-                    user_phone,
-                    country_code,
-                    address,
-                    lat,
-                    lng,
-                    name,
-                    payment_method
+                    addOrderBody
                 )
             )
             if (response.status) {

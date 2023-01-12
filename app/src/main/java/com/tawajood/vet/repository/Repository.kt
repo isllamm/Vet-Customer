@@ -175,21 +175,12 @@ constructor(private val api: RetrofitApi) {
         )
 
     suspend fun addOrder(
-        user_phone: String,
-        country_code: String,
-        address: String,
-        lat: String,
-        lng: String,
-        name: String,
-        payment_method: String
+        addOrderBody: AddOrderBody
     ) =
         api.addOrder(
             PrefsHelper.getLanguage(),
             PrefsHelper.getToken(),
-            PrefsHelper.getUserId().toString(),
-            user_phone,
-            country_code,
-            address, lat, lng, name, payment_method
+            addOrderBody
         )
 
     suspend fun reviewDoctor(clinic_id: String, rate: String, comment: String) =

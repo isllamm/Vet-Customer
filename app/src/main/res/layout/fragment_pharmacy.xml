@@ -17,6 +17,7 @@
             android:layout_height="@dimen/_46sdp"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_12sdp"
+            android:visibility="gone"
             android:layout_marginEnd="@dimen/_12sdp"
             android:background="@drawable/full_border_radius_12"
             android:orientation="horizontal"

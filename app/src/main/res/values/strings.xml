@@ -247,6 +247,8 @@
     <string name="receipt">receipt</string>
     <string name="fees_have_been_paid_successfully">Fees have been paid successfully</string>
     <string name="your_order_has_been_confirmed_successfully">Your Order has been confirmed successfully</string>
+    <string name="fab">fab</string>
+    <string name="instant_consultation">Instant consultation</string>
     <string-array name="Methods">
         <item>Pay in cash</item>
         <item>Credit card</item>
